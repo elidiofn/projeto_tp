@@ -7,16 +7,11 @@
 class Gerente : public Funcionario
 {
     public:
-        Gerente();
-        virtual ~Gerente();
-
+        Gerente(string, string, string, float);
+        ~Gerente();
         float get_salario();
-        void set_salario(float);
-        float get_comissao();
-        void set_comissao(float);
 
     private:
-        float salario;
         float comissao;
 };
 

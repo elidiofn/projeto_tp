@@ -1,20 +1,19 @@
 #ifndef MATERIALHIDRAULICO_H
 #define MATERIALHIDRAULICO_H
+
 #include "Produto.h"
+#include <string>
+using std::string;
 
 class MaterialHidraulico : public Produto
 {
     public:
-        MaterialHidraulico();
-        virtual ~MaterialHidraulico();
-
-        float get_preco();
-        void set_preco(float);
+        MaterialHidraulico(string, float, float);
+        ~MaterialHidraulico();
+        float desconto_a_vista();
 
     private:
-        float preco;
-        static final float desconto;
-
+        static int DESCONTO;
 };
 
 #endif // MATERIALHIDRAULICO_H

@@ -1,11 +1,10 @@
 #include "MaterialHidraulico.h"
 
-MaterialHidraulico::MaterialHidraulico()
-{
-    //ctor
-}
+MaterialHidraulico::MaterialHidraulico(string nome, float preco_compra, float preco_venda) : Produto(nome,preco_compra, preco_venda){}
 
-MaterialHidraulico::~MaterialHidraulico()
+MaterialHidraulico::~MaterialHidraulico(){}
+
+float MaterialHidraulico::desconto_a_vista()
 {
-    //dtor
+    return preco_venda * DESCONTO;
 }

@@ -6,15 +6,11 @@
 class Vendedor : public Funcionario
 {
     public:
-        Vendedor();
-        virtual ~Vendedor();
-
+        Vendedor(string, string, string, float);
+        ~Vendedor();
         float get_salario();
-        void set_salario(float);
-        float get_comissao();
 
     private:
-        float salario;
         float comissao;
 };
 

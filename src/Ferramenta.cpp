@@ -1,11 +1,10 @@
 #include "Ferramenta.h"
 
-Ferramenta::Ferramenta()
-{
-    //ctor
-}
+Ferramenta::Ferramenta(string nome, float preco_compra, float preco_venda) : Produto(nome,preco_compra, preco_venda){}
 
-Ferramenta::~Ferramenta()
+Ferramenta::~Ferramenta(){}
+
+float Ferramenta::desconto_a_vista()
 {
-    //dtor
+    return preco_venda * DESCONTO;
 }

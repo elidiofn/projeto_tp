@@ -1,20 +1,19 @@
 #ifndef FERRAMENTA_H
 #define FERRAMENTA_H
-#include "Produto.h"
 
+#include "Produto.h"
+#include <string>
+using std::string;
 
 class Ferramenta : Produto
 {
     public:
-        Ferramenta();
-        virtual ~Ferramenta();
-
-        float get_preco();
-        void set_preco(float);
+        Ferramenta(string, float, float);
+        ~Ferramenta();
+        float desconto_a_vista();
 
     private:
-        float preco;
-        static final float desconto;
+        static int DESCONTO;
 };
 
 #endif // FERRAMENTA_H

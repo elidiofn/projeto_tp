@@ -1,6 +1,7 @@
 #include <iostream>
 #include <locale>
 #include <iomanip>
+
 #include "Funcionario.h"
 #include "Gerente.h"
 #include "Vendedor.h"

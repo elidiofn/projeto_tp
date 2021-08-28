@@ -1,19 +1,19 @@
 #ifndef MATERIALCONSTRUCAO_H
 #define MATERIALCONSTRUCAO_H
 
+#include "Produto.h"
+#include <string>
+using std::string;
 
 class MaterialConstrucao : public Produto
 {
     public:
-        MaterialConstrucao();
-        virtual ~MaterialConstrucao();
-
-        float get_preco();
-        void set_preco(float);
+        MaterialConstrucao(string, float, float);
+        ~MaterialConstrucao();
+        float desconto_a_vista();
 
     private:
-        float preco;
-        static final float desconto;
+        static int DESCONTO;
 };
 
 #endif // MATERIALCONSTRUCAO_H
