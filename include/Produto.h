@@ -14,7 +14,7 @@ class Produto
         float get_preco_compra();
         float get_preco();
         void set_preco(float);
-        float desconto_a_vista() = 0;//metodo puramente virtual, ou seja, as classes derivadas serao obriagadas a implemetar o metodo.
+        virtual float desconto_a_vista() = 0;//metodo puramente virtual, ou seja, as classes derivadas serao obriagadas a implemetar o metodo.
 
     protected:
         float preco_venda;
