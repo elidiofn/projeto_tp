@@ -29,7 +29,16 @@ float Produto::get_preco()
     return preco_venda;
 }
 
-float Produto::set_preco(float preco)
+void Produto::set_preco(float preco)
 {
     preco_venda = preco;
+}
+float Produto::get_preco_avista()
+{
+
+}
+
+string Produto::to_string()
+{
+
 }

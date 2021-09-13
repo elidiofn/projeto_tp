@@ -1,10 +1,15 @@
 #include "Vendedor.h"
 
-Vedendor::Vendedor(string nome, string data_nascimento, string rg, float salario_base): Funcionario(nome, data_nascimento, rg, salario_base){}
+Vendedor::Vendedor(){}
 
-Vedendor::~Vendedor(){}
+Vendedor::Vendedor(string nome, string data_nascimento, string rg, float salario_base): Funcionario(nome, data_nascimento, rg, salario_base)
+{
+    comissao = 0;
+}
+
+Vendedor::~Vendedor(){}
 
 float Vendedor::get_salario()
 {
-    return Funcionario.get_salario() + comissao;
+    return salario_base + comissao;
 }

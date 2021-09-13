@@ -10,7 +10,8 @@ class MaterialConstrucao : public Produto
     public:
         MaterialConstrucao(string, float, float);
         ~MaterialConstrucao();
-        float desconto_a_vista();
+        float get_preco_avista();
+        string to_string();
 
     private:
         static int DESCONTO;

@@ -1,5 +1,7 @@
 #include "Funcionario.h"
 
+Funcionario::Funcionario(){}
+
 Funcionario::Funcionario(string nome, string data_nascimento, string rg, float salario_base)
 {
     this->nome = nome;

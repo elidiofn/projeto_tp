@@ -6,6 +6,7 @@ using std::string;
 class Funcionario
 {
     public:
+        Funcionario();
         Funcionario(string, string, string, float);
         virtual ~Funcionario();
         string get_nome();
@@ -16,11 +17,12 @@ class Funcionario
         void set_rg(string);
         virtual float get_salario();
 
+    protected:
+        float salario_base;
     private:
         string nome;
         string data_nascimento;
         string rg;
-        float salario_base;
 };
 
 #endif // FUNCIONARIO_H

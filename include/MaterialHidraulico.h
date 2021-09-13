@@ -10,7 +10,8 @@ class MaterialHidraulico : public Produto
     public:
         MaterialHidraulico(string, float, float);
         ~MaterialHidraulico();
-        float desconto_a_vista();
+        float get_preco_avista();
+        string to_string();
 
     private:
         static int DESCONTO;

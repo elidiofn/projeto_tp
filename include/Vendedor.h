@@ -6,6 +6,7 @@
 class Vendedor : public Funcionario
 {
     public:
+        Vendedor();
         Vendedor(string, string, string, float);
         ~Vendedor();
         float get_salario();

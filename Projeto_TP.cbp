@@ -34,7 +34,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Caixa.h" />
 		<Unit filename="include/Compra.h" />
+		<Unit filename="include/Estoque.h" />
 		<Unit filename="include/Ferramenta.h" />
 		<Unit filename="include/Funcionario.h" />
 		<Unit filename="include/Gerente.h" />
@@ -44,7 +46,9 @@
 		<Unit filename="include/Produto.h" />
 		<Unit filename="include/Venda.h" />
 		<Unit filename="include/Vendedor.h" />
+		<Unit filename="src/Caixa.cpp" />
 		<Unit filename="src/Compra.cpp" />
+		<Unit filename="src/Estoque.cpp" />
 		<Unit filename="src/Ferramenta.cpp" />
 		<Unit filename="src/Funcionario.cpp" />
 		<Unit filename="src/Gerente.cpp" />

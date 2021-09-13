@@ -10,7 +10,8 @@ class MaterialEletrico : public Produto
     public:
         MaterialEletrico(string, float, float);
         ~MaterialEletrico();
-        float desconto_a_vista();
+        float get_preco_avista();
+        string to_string();
 
     private:
         static int DESCONTO;

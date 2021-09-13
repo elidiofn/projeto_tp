@@ -1,0 +1,126 @@
+# depslib dependency file v1.0
+1631396744 source:c:\users\elidio\source\projeto_tp-main\src\ferramenta.cpp
+	"Ferramenta.h"
+
+1631400511 c:\users\elidio\source\projeto_tp-main\include\ferramenta.h
+	"Produto.h"
+	<string>
+
+1631394052 c:\users\elidio\source\projeto_tp-main\include\produto.h
+	<string>
+
+1631393701 source:c:\users\elidio\source\projeto_tp-main\src\funcionario.cpp
+	"Funcionario.h"
+
+1631393686 c:\users\elidio\source\projeto_tp-main\include\funcionario.h
+	<string>
+
+1631393539 source:c:\users\elidio\source\projeto_tp-main\src\gerente.cpp
+	"Gerente.h"
+
+1631393517 c:\users\elidio\source\projeto_tp-main\include\gerente.h
+	<Funcionario.h>
+
+1630196084 source:c:\users\elidio\source\projeto_tp-main\src\interfacegerencia.cpp
+
+1630196084 source:c:\users\elidio\source\projeto_tp-main\src\interfacevendedor.cpp
+
+1631397035 source:c:\users\elidio\source\projeto_tp-main\src\materialconstrucao.cpp
+	"MaterialConstrucao.h"
+
+1631394956 c:\users\elidio\source\projeto_tp-main\include\materialconstrucao.h
+	"Produto.h"
+	<string>
+
+1631396781 source:c:\users\elidio\source\projeto_tp-main\src\materialeletrico.cpp
+	"MaterialEletrico.h"
+
+1631395031 c:\users\elidio\source\projeto_tp-main\include\materialeletrico.h
+	"Produto.h"
+	<string>
+
+1631396793 source:c:\users\elidio\source\projeto_tp-main\src\materialhidraulico.cpp
+	"MaterialHidraulico.h"
+
+1631395070 c:\users\elidio\source\projeto_tp-main\include\materialhidraulico.h
+	"Produto.h"
+	<string>
+
+1631394074 source:c:\users\elidio\source\projeto_tp-main\src\produto.cpp
+	"Produto.h"
+
+1631398027 source:c:\users\elidio\source\projeto_tp-main\src\vendedor.cpp
+	"Vendedor.h"
+
+1631398001 c:\users\elidio\source\projeto_tp-main\include\vendedor.h
+	<Funcionario.h>
+
+1631398125 source:c:\users\elidio\source\projeto_tp-main\src\caixa.cpp
+	"Caixa.h"
+
+1631406269 c:\users\elidio\source\projeto_tp-main\include\caixa.h
+	"Venda.h"
+	"Compra.h"
+	<vector>
+	<string>
+
+1631402865 c:\users\elidio\source\projeto_tp-main\include\venda.h
+	"Produto.h"
+	"Vendedor.h"
+	<vector>
+	<string>
+
+1631403765 c:\users\elidio\source\projeto_tp-main\include\compra.h
+	"Produto.h"
+	"Gerente.h"
+	<string>
+	<vector>
+
+1631403945 source:c:\users\elidio\source\projeto_tp-main\src\compra.cpp
+	"Compra.h"
+	"Produto.h"
+	<string>
+	<vector>
+
+1631389612 source:c:\users\elidio\source\projeto_tp-main\src\estoque.cpp
+	"Estoque.h"
+
+1631394302 c:\users\elidio\source\projeto_tp-main\include\estoque.h
+	"MaterialConstrucao.h"
+	"MaterialEletrico.h"
+	"MaterialHidraulico.h"
+	"Ferramenta.h"
+	<string>
+	<vector>
+	<utility>
+
+1631403820 source:c:\users\elidio\source\projeto_tp-main\src\venda.cpp
+	"Venda.h"
+	"Produto.h"
+	"Funcionario.h"
+	<vector>
+	<string>
+
+1631404223 source:c:\users\elidio\source\projeto_tp-main\src\loja.cpp
+	<iostream>
+	<locale>
+	<iomanip>
+	<string>
+	"Funcionario.h"
+	"Gerente.h"
+	"Vendedor.h"
+	"Produto.h"
+	"MaterialConstrucao.h"
+	"MaterialEletrico.h"
+	"MaterialHidraulico.h"
+	"Ferramenta.h"
+	"Venda.h"
+	"Caixa.h"
+	"Estoque.h"
+	"InterfaceVendedor.cpp"
+	"InterfaceGerencia.cpp"
+
+1630196084 c:\users\elidio\source\projeto_tp-main\src\interfacevendedor.cpp
+
+1630196084 c:\users\elidio\source\projeto_tp-main\src\interfacegerencia.cpp
+

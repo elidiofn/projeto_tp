@@ -5,12 +5,13 @@
 #include <string>
 using std::string;
 
-class Ferramenta : Produto
+class Ferramenta : public Produto
 {
     public:
         Ferramenta(string, float, float);
         ~Ferramenta();
-        float desconto_a_vista();
+        float get_preco_avista();
+        string to_string();
 
     private:
         static int DESCONTO;

@@ -7,6 +7,7 @@
 class Gerente : public Funcionario
 {
     public:
+        Gerente();
         Gerente(string, string, string, float);
         ~Gerente();
         float get_salario();
