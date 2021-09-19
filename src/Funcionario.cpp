@@ -65,7 +65,8 @@ string Funcionario::get_senha()
 void Funcionario::set_comissao(float comissao)
 {
 
-}
+}
+
 string Funcionario::get_tipo()
 {
 
