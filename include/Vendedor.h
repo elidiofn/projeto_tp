@@ -12,6 +12,7 @@ class Vendedor : public Funcionario
         void set_comissao(float);
         float get_salario();
         string get_tipo();
+        string to_string();
 
     private:
         float comissao;

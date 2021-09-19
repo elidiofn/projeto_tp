@@ -21,6 +21,7 @@ class Funcionario
         virtual float get_salario();
         virtual void set_comissao(float);
         virtual string get_tipo();
+        virtual string to_string();
     protected:
         float salario_base;
     private:

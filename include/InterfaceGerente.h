@@ -3,6 +3,8 @@
 
 void cadastrar_vendedor();
 void excluir_vendedor();
+void exibir_vendedores();
+void realizar_compra();
 void realizar_venda_gerente();
 void relatorio_vendas();
 void relatorio_estoque();
