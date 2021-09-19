@@ -2,7 +2,11 @@
 #include <locale>
 #include <iomanip>
 #include <string>
-using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
+using std::getline;
+
 
 #include "Funcionario.h"
 #include "Gerente.h"
@@ -37,14 +41,18 @@ int main()
 }
  void login()
  {
+    system("cls");
+    cout << "\n==================================LOGIN=====================================\n";
     string id, pw;
     cout << "Usuário: ";
     getline(cin, id);
     cout << "Senha: ";
     getline(cin, pw);
+    cout << "\n============================================================================\n";
 
     if(id == "admin" && pw == "admin")
     {
+        system("cls");
         cadastrar_gerente();
         cin.ignore();
         login();
@@ -68,6 +76,16 @@ int main()
             menu_vendedor();
             login();
         }
+    }
+    if(id == "SAIR" || id == "sair")
+    {
+        //
+    }
+    else
+    {
+        cout << "Usuário ou senha incoreto!!" <<endl;
+        system("pause");
+        login();
     }
  }
 

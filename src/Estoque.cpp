@@ -72,12 +72,12 @@ void Estoque::saida(Produto* produto, int quantidade)
 
 string Estoque::impr_estoque()
 {
-    string relatorio = "\n=================================ESTOQUE======================================\n";
+    string relatorio = "\n=================================ESTOQUE=====================================\n";
     for(int i = 0; i < produtos.size(); i++)
     {
         relatorio += "Produto: " + produtos[i].first->get_nome() + "\nQuantidade: " + to_string( produtos[i].second) + "\n";
     }
-    relatorio += "\n==============================================================================\n";
+    relatorio +=       "\n=============================================================================\n";
     return relatorio;
 }
 

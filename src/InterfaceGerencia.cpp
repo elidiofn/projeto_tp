@@ -11,6 +11,7 @@
 #include <vector>
 using std::cout;
 using std::cin;
+using std::endl;
 using std::string;
 using std::getline;
 using std::vector;
@@ -23,44 +24,71 @@ extern Caixa caixa;
 void menu_gerente()
 {
     int opcao = 0;
-    while(opcao != 7)
+    while(opcao != 9)
     {
+        system("cls");
         cout << "\n=============================Menu Gerente===================================\n";
         cout << "1 - CADASTRAR VENDEDOR\n";
         cout << "2 - EXCLUIR VENDEDOR\n";
-        cout << "3 - REALIZAR VENDA\n";
-        cout << "4 - RELATÓRIO DE VENDAS\n";
-        cout << "5 - RELATÓRIO ESTOQUE\n";
-        cout << "6 - RELATÓRIO CAIXA\n";
-        cout << "7 - SAIR\n";
-        cout << " SELECIONE A OPÇÃO DESEJADA: ";
+        cout << "3 - EXIBIR FUNCIONARIOS\n";
+        cout << "4 - REALIZAR COMPRA\n";
+        cout << "5 - REALIZAR VENDA\n";
+        cout << "6 - RELATÓRIO DE VENDAS\n";
+        cout << "7 - RELATÓRIO ESTOQUE\n";
+        cout << "8 - RELATÓRIO CAIXA\n";
+        cout << "9 - SAIR\n";
+        cout << "SELECIONE A OPÇÃO DESEJADA: ";
         cin >> opcao;
-        cout << "\n==============================================================================\n";
+        cout << "\n=============================================================================\n";
         cin.ignore();
         switch(opcao)
         {
             case 1:
+                system("cls");
                 cadastrar_vendedor();
+                system("pause");
                 opcao = 0;
                 break;
             case 2:
+                system("cls");
                 excluir_vendedor();
+                system("pause");
                 opcao = 0;
                 break;
             case 3:
-                realizar_venda_gerente();
+                system("cls");
+                exibir_vendedores();
+                system("pause");
                 opcao = 0;
                 break;
             case 4:
-                relatorio_vendas();
+                system("cls");
+                realizar_compra();
+                system("pause");
                 opcao = 0;
                 break;
             case 5:
-                relatorio_estoque();
+                system("cls");
+                realizar_venda_gerente();
+                system("pause");
                 opcao = 0;
                 break;
             case 6:
+                system("cls");
+                relatorio_vendas();
+                system("pause");
+                opcao = 0;
+                break;
+            case 7:
+                system("cls");
+                relatorio_estoque();
+                system("pause");
+                opcao = 0;
+                break;
+            case 8:
+                system("cls");
                 relatorio_caixa();
+                system("pause");
                 opcao = 0;
                 break;
         }
@@ -70,7 +98,7 @@ void cadastrar_vendedor()
 {
     string nome, data_nasc, rg, senha;
     float sal;
-    cout << "\n============================CADASTRAR VENDEDOR===============================\n";
+    cout << "\n============================CADASTRAR VENDEDOR==============================\n";
     cout << "DIGITE O NOME: ";
     getline(cin, nome);
     cout << "DIGITE A DATA DE NASCIMENTO(DD/MM/AAAA): ";
@@ -81,14 +109,15 @@ void cadastrar_vendedor()
     getline(cin, senha);
     cout << "DIGITE O SALÁRIO: ";
     cin >> sal;
+    cin.ignore();
     Vendedor vend = Vendedor(nome, data_nasc, rg, sal, senha);
     vendedores.push_back(vend);
-    cout << "\n=============================================================================\n";
+    cout << "\n============================================================================\n";
 }
 void excluir_vendedor()
 {
     string nome;
-    cout << "\n============================EXCLUIR VENDEDOR=================================\n";
+    cout << "\n============================EXCLUIR VENDEDOR================================\n";
     cout << "DIGITE O NOME: ";
     getline(cin, nome);
     for(int i = 0; i < vendedores.size(); i++)
@@ -100,6 +129,71 @@ void excluir_vendedor()
     }
     cout << "\n=============================================================================\n";
 }
+
+void exibir_vendedores()
+{
+    cout << "\n==================================FUNCIONARIOS================================\n";
+    cout << gerente.to_string() << endl;
+    for(int i =0; i < vendedores.size(); i++)
+    {
+        cout << vendedores[i].to_string() << endl;
+    }
+    cout << "\n==============================================================================\n";
+}
+
+void realizar_compra()
+{
+    string data, pagamento, tipo_produto;
+    string nome_produto = "";
+    float p_compra, p_venda;
+    cout << "\n==================================COMPRA=====================================\n";
+    cout << "INFORMA A DATA: ";
+    getline(cin, data);
+    Compra co = Compra(data, gerente);
+    while(nome_produto != "SAIR" || nome_produto != "sair")
+    {
+        cout << "\nNOME DO PRODUTO PARA ADICIONAR(DIGITE SAIR PARA FINALIZAR): ";
+        getline(cin, nome_produto);
+        if(nome_produto == "sair" || nome_produto == "SAIR")
+        {
+            break;
+        }
+        cout << "\nTIPO DO PRODUTO:\n 1 PARA MATERIAL DE CONSTRUÇÃO\n 2 PARA MATERIAL DE ELÉTRICO\n 3 PARA MATERIAL DE HIDRÁULICO\n 4 PARA FERRAMENTA\n";
+        getline(cin, tipo_produto);
+        cout << "\nPREÇO DE COMPRA DO PRODUTO: ";
+        cin >> p_compra;
+        cout << "\nPREÇO VENDA DO PRODUTO:  ";
+        cin >> p_venda;
+        cin.ignore();
+        Produto* p;
+        if(tipo_produto == "1")
+        {
+            p = new MaterialConstrucao(nome_produto, p_compra, p_venda);
+        }
+        else if(tipo_produto == "2")
+        {
+             p = new MaterialEletrico(nome_produto, p_compra, p_venda);
+        }
+        else if(tipo_produto == "3")
+        {
+             p = new MaterialHidraulico(nome_produto, p_compra, p_venda);
+        }
+        else if(tipo_produto == "4")
+        {
+             p = new Ferramenta(nome_produto, p_compra, p_venda);
+        }
+        co.add_intem(p);
+    }
+    cout << "\nDIGITE A FORMA DE PAGAMENTO: 1 - À VISTA OU 2 - A PRAZO: ";
+    getline(cin, pagamento);
+    if(pagamento == "1")
+    {
+        pagamento = "avista";
+    }
+    caixa.saida(co,pagamento);
+    cout << "\n============================================================================\n";
+}
+
 void realizar_venda_gerente()
 {
     string data, nome_produto = "", pagamento;
@@ -118,13 +212,25 @@ void realizar_venda_gerente()
     {
         cout << "\nNOME DO PRODUTO PARA ADICIONAR(DIGITE SAIR PARA FINALIZAR): ";
         getline(cin, nome_produto);
+         if(nome_produto == "sair" || nome_produto == "SAIR")
+        {
+            break;
+        }
         if(estoque.busca_produto(nome_produto).first != nullptr)
         {
             ve.add_intem(estoque.busca_produto(nome_produto).first);
         }
+        else
+        {
+            cout << "\nPRODUTO INDISPONÍVEL";
+        }
     }
-    cout << "\n COMO SERÁ O PAGAMENTO À VISTA OU A PRAZO: ";
+    cout << "\n DIGITE A FORMA DE PAGAMENTO: 1 - À VISTA OU 2 - A PRAZO: ";
     getline(cin, pagamento);
+    if(pagamento == "1")
+    {
+        pagamento = "avista";
+    }
     caixa.entrada(ve,pagamento);
     cout << "\n=============================================================================\n";
 }

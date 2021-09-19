@@ -29,19 +29,26 @@ void menu_vendedor()
         cout << " SELECIONE A OPÇÃO DESEJADA: ";
         cin >> opcao;
         cout << "\n==============================================================================\n";
+        cin.ignore();
         switch(opcao)
         {
             case 1:
+                system("cls");
                 realizar_venda();
                 opcao = 0;
+                system("pause");
                 break;
             case 2:
+                system("cls");
                 relatorio_minhas_vendas();
                 opcao = 0;
+                system("pause");
                 break;
             case 3:
+                system("cls");
                 consultar_estoque();
                 opcao = 0;
+                system("pause");
                 break;
         }
     }
@@ -57,13 +64,25 @@ void realizar_venda()
     {
         cout << "\nNOME DO PRODUTO PARA ADICIONAR(DIGITE SAIR PARA FINALIZAR): ";
         getline(cin, nome_produto);
-        if(estoque.busca_produto(nome_produto).first != nullptr)
+        if(nome_produto == "sair" || nome_produto == "SAIR")
+        {
+            break;
+        }
+        else if(estoque.busca_produto(nome_produto).first != nullptr)
         {
             ve.add_intem(estoque.busca_produto(nome_produto).first);
         }
+         else
+        {
+            cout << "\nPRODUTO INDISPONÍVEL";
+        }
     }
-    cout << "\n COMO SERÁ O PAGAMENTO À VISTA OU A PRAZO: ";
+    cout << "\nDIGITE A FORMA DE PAGAMENTO: 1 - À VISTA OU 2 - A PRAZO: ";
     getline(cin, pagamento);
+    if(pagamento == "1")
+    {
+        pagamento = "avista";
+    }
     caixa.entrada(ve,pagamento);
     cout << "\n=============================================================================\n";
 }
@@ -79,6 +98,6 @@ void consultar_estoque()
     cout << "\n=========================CONSULTAR ESTOQUE===================================\n";
     cout << "\nNOME DO PRODUTO: ";
     getline(cin, nome_produto);
-    cout << estoque.busca_produto(nome_produto).first;
+    cout << estoque.busca_produto(nome_produto).second;
     cout << "\n=============================================================================\n";
 }

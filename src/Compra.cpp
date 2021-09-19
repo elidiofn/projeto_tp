@@ -26,12 +26,13 @@ Compra::~Compra()
 
 float Compra::get_valor()
 {
-  return valor_prazo;
+    return valor_prazo;
 }
 
 float Compra::get_valor_avista()
 {
-  return valor_avista;
+    valor_avista = valor_prazo - (valor_prazo*0.1);
+    return valor_avista;
 }
 
 void Compra::set_comprador(Gerente ge)
@@ -71,8 +72,7 @@ void Compra::add_intem(Produto* novo)
     {
         itens.push_back(new Ferramenta(nome,preco_compra, preco_venda));
     }
-    valor_prazo += novo->get_preco();
-    valor_avista += novo->get_preco_avista();
+    valor_prazo += novo->get_preco_compra();
 }
 
 void Compra::remover_item(Produto* item)
@@ -98,6 +98,6 @@ string Compra::to_string()
         compra += itens[i]->to_string() + "\n";
    }
    compra += "Valor Total a Prazo: " + std::to_string(valor_prazo);
-   compra += "\nValor Total com Desconto de à Vista: " + std::to_string(valor_avista) + "\n========================\n";
+   compra += "\nValor Total com Desconto de à Vista: " + std::to_string(get_valor_avista()) + "\n========================\n";
    return compra;
  }

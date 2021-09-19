@@ -90,7 +90,7 @@ string Caixa::get_vendas_por_vendedor(string nome_vendedor)
     for(int i=0; i<vend.size(); i++){
         vendas += vend[i].to_string() + "\n";
     }
-    vendas += "\n==================================\n";
+    vendas += "\n========================================\n";
    return vendas;
 }
 string Caixa::to_string()

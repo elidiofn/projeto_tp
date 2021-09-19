@@ -71,3 +71,7 @@ string Funcionario::get_tipo()
 
 }
 
+string Funcionario::to_string()
+{
+
+}
