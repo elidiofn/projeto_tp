@@ -33,7 +33,13 @@ void Produto::set_preco(float preco)
 {
     preco_venda = preco;
 }
+
 float Produto::get_preco_avista()
+{
+
+}
+
+string Produto::get_tipo()
 {
 
 }

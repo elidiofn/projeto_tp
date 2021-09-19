@@ -18,3 +18,8 @@ string MaterialEletrico::to_string()
 {
     return "Material Eletrico, " + nome + ", " + std::to_string(preco_compra) + ", " + std::to_string(preco_venda) + ", " + std::to_string(get_preco_avista());
 }
+
+string MaterialEletrico::get_tipo()
+{
+    return "Material Elétrico";
+}

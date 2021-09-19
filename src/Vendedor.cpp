@@ -1,15 +1,28 @@
 #include "Vendedor.h"
 
-Vendedor::Vendedor(){}
+Vendedor::Vendedor()
+{
+    comissao = 0;
+}
 
-Vendedor::Vendedor(string nome, string data_nascimento, string rg, float salario_base): Funcionario(nome, data_nascimento, rg, salario_base)
+Vendedor::Vendedor(string nome, string data_nascimento, string rg, float salario_base, string senha): Funcionario(nome, data_nascimento, rg, salario_base, senha)
 {
     comissao = 0;
 }
 
 Vendedor::~Vendedor(){}
 
+void Vendedor::set_comissao(float comissao)
+{
+    this->comissao = comissao;
+}
+
 float Vendedor::get_salario()
 {
     return salario_base + comissao;
+}
+
+string Vendedor::get_tipo()
+{
+    return "Vendedor";
 }

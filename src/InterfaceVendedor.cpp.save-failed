@@ -1,24 +1,11 @@
-#include "InterfaceVendedor.h"
-#include "Caixa.h"
-#include "Estoque.h"
-#include "Venda.h"
-#include "Funcionario.h"
-#include <iostream>
-#include <string>
-using std::cout;
-using std::cin;
-using std::getline;
-
+#include <conio.h>
 
 extern Estoque estoque;
 extern Funcionario* vendedor_uso;
-extern Caixa caixa;
-
 
 void menu_vendedor()
-{
-    int opcao = 0;
-    while(opcao != 4)
+{   int opcao = 0;
+    while(opcao =! 4)
     {
         system("cls");
         cout << "\n=============================Menu Vendedor===================================\n";
@@ -51,19 +38,19 @@ void realizar_venda()
     string data, nome_produto = "", pagamento;
     cout << "\n==================================VENDA======================================\n";
     cout << "INFORMA A DATA: ";
-    getline(cin, data);
+    getLine(cin, data);
     Venda ve = Venda(data, vendedor_uso);
     while(nome_produto != "SAIR" || nome_produto != "sair")
     {
         cout << "\nNOME DO PRODUTO PARA ADICIONAR(DIGITE SAIR PARA FINALIZAR): ";
-        getline(cin, nome_produto);
-        if(estoque.busca_produto(nome_produto).first != nullptr)
+        getLine(cin, nome_produto);
+        if(estoque.busca_produto(nome_produto) != nullptr)
         {
-            ve.add_intem(estoque.busca_produto(nome_produto).first);
+            ve.add_intem(estoque.busca_produto(nome_produto));
         }
     }
     cout << "\n COMO SERÁ O PAGAMENTO À VISTA OU A PRAZO: ";
-    getline(cin, pagamento);
+    getLine(cin, pagamento);
     caixa.entrada(ve,pagamento);
     cout << "\n=============================================================================\n";
 }
@@ -75,10 +62,7 @@ void relatorio_minhas_vendas()
 }
 void consultar_estoque()
 {
-    string nome_produto;
     cout << "\n=========================CONSULTAR ESTOQUE===================================\n";
-    cout << "\nNOME DO PRODUTO: ";
-    getline(cin, nome_produto);
-    cout << estoque.busca_produto(nome_produto).first;
+    cout << estoque.busca_produto()->get_nome();
     cout << "\n=============================================================================\n";
 }

@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <string>
 using namespace std;
+
 #include "Funcionario.h"
 #include "Gerente.h"
 #include "Vendedor.h"
@@ -14,31 +15,24 @@ using namespace std;
 #include "Venda.h"
 #include "Caixa.h"
 #include "Estoque.h"
-#include "InterfaceVendedor.cpp"
-#include "InterfaceGerencia.cpp"
+#include "InterfaceVendedor.h"
+#include "InterfaceGerente.h"
 
+Estoque estoque;
 Caixa caixa;
 vector<Vendedor> vendedores;
 Gerente gerente;
-Estoque estoque;
-string admin = "admin";
-string s_admin ="admin";
+Funcionario* vendedor_uso;
+const string admin = "admin";
+const string s_admin = "admin";
 
 void login();
+void cadastrar_gerente();
+
 int main()
 {
     setlocale(LC_ALL, "portuguese");
-    Produto* mc = new MaterialConstrucao("areia", 10, 12);
-    Produto* me = new MaterialEletrico("fio 2.5", 5, 6);
-    Produto* mh = new MaterialHidraulico("curva 90", 12, 14);
-    Produto* f = new Ferramenta("alicate", 15, 20);
-    cout << mc->to_string() << endl << me->to_string() << endl;
-    cout << mh->to_string() << endl << f->to_string() << endl;
-
-    delete mc;
-    delete f;
-    delete me;
-    delete mh;
+    login();
     return 0;
 }
  void login()
@@ -48,4 +42,50 @@ int main()
     getline(cin, id);
     cout << "Senha: ";
     getline(cin, pw);
+
+    if(id == "admin" && pw == "admin")
+    {
+        cadastrar_gerente();
+        cin.ignore();
+        login();
+    }
+    else if(gerente.get_nome() == id && gerente.verificar_senha(pw))
+    {
+        menu_gerente();
+        login();
+    }
+    for(int i = 0; i < vendedores.size(); i++)
+    {
+        if(vendedores[i].get_nome() == id && vendedores[i].verificar_senha(pw))
+        {
+            string nome = vendedores[i].get_nome();
+            string data_nasc = vendedores[i].get_data_nascimento();
+            string rg = vendedores[i].get_rg();
+            string senha = vendedores[i].get_senha();
+            float sal = vendedores[i].get_salario();
+            Funcionario* f = new Vendedor(nome, data_nasc, rg, sal, senha);
+            vendedor_uso = f;
+            menu_vendedor();
+            login();
+        }
+    }
+ }
+
+ void cadastrar_gerente()
+ {
+    string nome, data_nasc, rg, senha;
+    float sal;
+    cout << "\n============================CADASTRAR GERENTE===============================\n";
+    cout << "DIGITE O NOME: ";
+    getline(cin, nome);
+    cout << "DIGITE A DATA DE NASCIMENTO(DD/MM/AAAA): ";
+    getline(cin, data_nasc);
+    cout << "DIGITE O RG: ";
+    getline(cin, rg);
+    cout << "DIGITE A SENHA: ";
+    getline(cin, senha);
+    cout << "DIGITE O SALÁRIO: ";
+    cin >> sal;
+    gerente = Gerente(nome, data_nasc, rg, sal, senha);
+    cout << "\n============================================================================\n";
  }

@@ -20,7 +20,9 @@ Compra::Compra(string data, Gerente ge)
     valor_avista = 0;
 }
 
-Compra::~Compra(){}
+Compra::~Compra()
+{
+}
 
 float Compra::get_valor()
 {
@@ -49,7 +51,26 @@ string Compra::get_data()
 
 void Compra::add_intem(Produto* novo)
 {
-    itens.push_back(novo->to_string());
+    string nome = novo->get_nome();
+    float preco_compra = novo->get_preco_compra();
+    float preco_venda = novo->get_preco();
+
+    if(novo->get_tipo() == "Material Construção")
+    {
+       itens.push_back(new MaterialConstrucao(nome,preco_compra, preco_venda));
+    }
+    else if(novo->get_tipo() == "Material Elétrico")
+    {
+       itens.push_back(new MaterialEletrico(nome,preco_compra, preco_venda));
+    }
+    else if(novo->get_tipo() == "Material Hidráulico")
+    {
+        itens.push_back(new MaterialHidraulico(nome,preco_compra, preco_venda));
+    }
+    else if(novo->get_tipo() == "Ferramenta")
+    {
+        itens.push_back(new Ferramenta(nome,preco_compra, preco_venda));
+    }
     valor_prazo += novo->get_preco();
     valor_avista += novo->get_preco_avista();
 }
@@ -57,7 +78,7 @@ void Compra::add_intem(Produto* novo)
 void Compra::remover_item(Produto* item)
 {
     for(int i = 0; i < itens.size(); i++){
-        if(itens[i] == item->to_string()){
+        if(itens[i]->get_nome() == item->get_nome()){
             itens.erase(itens.begin()+i);
             valor_prazo -= item->get_preco();
             valor_avista -= item->get_preco_avista();
@@ -65,11 +86,16 @@ void Compra::remover_item(Produto* item)
     }
 }
 
- string Compra::to_string()
+vector<Produto*> Compra::get_produtos()
+{
+    return itens;
+}
+
+string Compra::to_string()
  {
     string compra = "\n========================\nGerente: "+ comprador.get_nome() + "\nData: " + this->data + "\nItens:\n";
     for(int i=0;i<itens.size();i++){
-        compra += itens[i] + "\n";
+        compra += itens[i]->to_string() + "\n";
    }
    compra += "Valor Total a Prazo: " + std::to_string(valor_prazo);
    compra += "\nValor Total com Desconto de à Vista: " + std::to_string(valor_avista) + "\n========================\n";
