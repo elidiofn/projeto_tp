@@ -27,7 +27,7 @@ void menu_gerente()
     while(opcao != 9)
     {
         system("cls");
-        cout << "\n=============================Menu Gerente===================================\n";
+        cout << "=============================Menu Gerente===================================\n";
         cout << "1 - CADASTRAR VENDEDOR\n";
         cout << "2 - EXCLUIR VENDEDOR\n";
         cout << "3 - EXIBIR FUNCIONARIOS\n";
@@ -98,7 +98,7 @@ void cadastrar_vendedor()
 {
     string nome, data_nasc, rg, senha;
     float sal;
-    cout << "\n============================CADASTRAR VENDEDOR==============================\n";
+    cout << "============================CADASTRAR VENDEDOR==============================\n";
     cout << "DIGITE O NOME: ";
     getline(cin, nome);
     cout << "DIGITE A DATA DE NASCIMENTO(DD/MM/AAAA): ";
@@ -117,7 +117,7 @@ void cadastrar_vendedor()
 void excluir_vendedor()
 {
     string nome;
-    cout << "\n============================EXCLUIR VENDEDOR================================\n";
+    cout << "============================EXCLUIR VENDEDOR================================\n";
     cout << "DIGITE O NOME: ";
     getline(cin, nome);
     for(int i = 0; i < vendedores.size(); i++)
@@ -132,7 +132,7 @@ void excluir_vendedor()
 
 void exibir_vendedores()
 {
-    cout << "\n==================================FUNCIONARIOS================================\n";
+    cout << "==================================FUNCIONARIOS================================\n";
     cout << gerente.to_string() << endl;
     for(int i =0; i < vendedores.size(); i++)
     {
@@ -146,7 +146,7 @@ void realizar_compra()
     string data, pagamento, tipo_produto;
     string nome_produto = "";
     float p_compra, p_venda;
-    cout << "\n==================================COMPRA=====================================\n";
+    cout << "==================================COMPRA=====================================\n";
     cout << "INFORMA A DATA: ";
     getline(cin, data);
     Compra co = Compra(data, gerente);
@@ -197,7 +197,7 @@ void realizar_compra()
 void realizar_venda_gerente()
 {
     string data, nome_produto = "", pagamento;
-    cout << "\n==================================VENDA======================================\n";
+    cout << "==================================VENDA======================================\n";
     cout << "INFORMA A DATA: ";
     getline(cin, data);
     string nome = gerente.get_nome();
@@ -236,19 +236,19 @@ void realizar_venda_gerente()
 }
 void relatorio_vendas()
 {
-    cout << "\n=============================RELATÓRIO VENDAS================================\n";
+    cout << "=============================RELATÓRIO VENDAS================================\n";
     cout << caixa.get_vendas();
     cout << "\n=============================================================================\n";
 }
 void relatorio_estoque()
 {
-    cout << "\n=============================RELATÓRIO ESTOQUE===============================\n";
+    cout << "=============================RELATÓRIO ESTOQUE===============================\n";
     cout << estoque.impr_estoque();
     cout << "\n=============================================================================\n";
 }
 void relatorio_caixa()
 {
-    cout << "\n=============================RELATÓRIO CAIXA=================================\n";
+    cout << "=============================RELATÓRIO CAIXA=================================\n";
     cout << caixa.to_string();
     cout << "\n=============================================================================\n";
 }

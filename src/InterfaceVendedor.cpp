@@ -21,7 +21,7 @@ void menu_vendedor()
     while(opcao != 4)
     {
         system("cls");
-        cout << "\n=============================Menu Vendedor===================================\n";
+        cout << "=============================Menu Vendedor===================================\n";
         cout << "1 - REALIZAR VENDA\n";
         cout << "2 - RELATÓRIO MINHAS VENDAS\n";
         cout << "3 - CONSULTAR ESTOQUE\n";
@@ -56,7 +56,7 @@ void menu_vendedor()
 void realizar_venda()
 {
     string data, nome_produto = "", pagamento;
-    cout << "\n==================================VENDA======================================\n";
+    cout << "==================================VENDA======================================\n";
     cout << "INFORMA A DATA: ";
     getline(cin, data);
     Venda ve = Venda(data, vendedor_uso);
@@ -88,14 +88,14 @@ void realizar_venda()
 }
 void relatorio_minhas_vendas()
 {
-    cout << "\n=========================RELATÓRIO MINHAS VENDAS=============================\n";
+    cout << "=========================RELATÓRIO MINHAS VENDAS=============================\n";
     cout << caixa.get_vendas_por_vendedor(vendedor_uso->get_nome());
     cout << "\n=============================================================================\n";
 }
 void consultar_estoque()
 {
     string nome_produto;
-    cout << "\n=========================CONSULTAR ESTOQUE===================================\n";
+    cout << "=========================CONSULTAR ESTOQUE===================================\n";
     cout << "\nNOME DO PRODUTO: ";
     getline(cin, nome_produto);
     cout << estoque.busca_produto(nome_produto).second;

@@ -42,7 +42,7 @@ int main()
  void login()
  {
     system("cls");
-    cout << "\n==================================LOGIN=====================================\n";
+    cout << "==================================LOGIN=====================================\n";
     string id, pw;
     cout << "Usuário: ";
     getline(cin, id);
@@ -93,7 +93,7 @@ int main()
  {
     string nome, data_nasc, rg, senha;
     float sal;
-    cout << "\n============================CADASTRAR GERENTE===============================\n";
+    cout << "============================CADASTRAR GERENTE===============================\n";
     cout << "DIGITE O NOME: ";
     getline(cin, nome);
     cout << "DIGITE A DATA DE NASCIMENTO(DD/MM/AAAA): ";

@@ -2,7 +2,7 @@
 
 Estoque::Estoque()
 {
-    carregar_estoque();
+    ler_estoque();
 }
 
 Estoque::~Estoque()
@@ -13,9 +13,12 @@ Estoque::~Estoque()
     }
 }
 
-void Estoque::salvar_estoque()
+void Estoque::salvar_estoque(string entrada)
 {
-
+    ofstream arquivoWRITE;
+    arquivoWRITE.open("estoque.txt");
+    arquivoWRITE << entrada;
+    arquivoWRITE.close();
 }
 
 //Retorna a informação sobre um produto no estoque ou  se não houver.
@@ -38,27 +41,35 @@ void Estoque::entrada(Produto* produto, int quantidade)
     {
         produtos[indice].second += quantidade;
     }
+    else
+    {
+        string nome = produto->get_nome();
+        float preco_compra = produto->get_preco_compra();
+        float preco_venda = produto->get_preco();
 
-    string nome = produto->get_nome();
-    float preco_compra = produto->get_preco_compra();
-    float preco_venda = produto->get_preco();
-
-    if(produto->get_tipo() == "Material Construção")
-    {
-        produtos.push_back(make_pair(new MaterialConstrucao(nome, preco_compra, preco_venda), quantidade));
+        if(produto->get_tipo() == "Material Construção")
+        {
+            produtos.push_back(make_pair(new MaterialConstrucao(nome, preco_compra, preco_venda), quantidade));
+        }
+        else if(produto->get_tipo() == "Material Elétrico")
+        {
+            produtos.push_back(make_pair(new MaterialEletrico(nome, preco_compra, preco_venda), quantidade));
+        }
+        else if(produto->get_tipo() == "Material Hidráulico")
+        {
+            produtos.push_back(make_pair(new MaterialHidraulico(nome, preco_compra, preco_venda), quantidade));
+        }
+        else if(produto->get_tipo() == "Ferramenta")
+        {
+            produtos.push_back(make_pair(new Ferramenta(nome, preco_compra, preco_venda), quantidade));
+        }
     }
-    else if(produto->get_tipo() == "Material Elétrico")
+    string entrada = "";
+    for(int i =0; i < produtos.size(); i++)
     {
-        produtos.push_back(make_pair(new MaterialEletrico(nome, preco_compra, preco_venda), quantidade));
+        entrada += "< " + produtos[i].first->to_string() + " >< " + std::to_string(produtos[i].second) + " >\n";
     }
-    else if(produto->get_tipo() == "Material Hidráulico")
-    {
-        produtos.push_back(make_pair(new MaterialHidraulico(nome, preco_compra, preco_venda), quantidade));
-    }
-    else if(produto->get_tipo() == "Ferramenta")
-    {
-        produtos.push_back(make_pair(new Ferramenta(nome, preco_compra, preco_venda), quantidade));
-    }
+    salvar_estoque(entrada);
 }
 
 void Estoque::saida(Produto* produto, int quantidade)
@@ -68,6 +79,12 @@ void Estoque::saida(Produto* produto, int quantidade)
     {
         produtos[indice].second -= quantidade;
     }
+    string entrada = "";
+    for(int i =0; i < produtos.size(); i++)
+    {
+        entrada += "< " + produtos[i].first->to_string() + " >< " + std::to_string(produtos[i].second) + " >\n";
+    }
+    salvar_estoque(entrada);
 }
 
 string Estoque::impr_estoque()
@@ -81,9 +98,20 @@ string Estoque::impr_estoque()
     return relatorio;
 }
 
-void Estoque::carregar_estoque()
+void Estoque::ler_estoque()
 {
-
+    string linha;
+    vector<string> linhas;
+    ifstream arquivoREAD;
+    arquivoREAD.open("estoque.txt");
+    if(arquivoREAD.is_open())
+    {
+        while(getline(arquivoREAD, linha))
+        {
+            linhas.push_back(linha);
+        }
+    }
+    carregar_estoque(linhas);
 }
 
 //Retorna o indice do produto no estoque ou -1 se não houver.
@@ -95,4 +123,8 @@ int Estoque::busca_indice_produto(string nome)
         }
     }
     return -1;
+}
+ void Estoque::carregar_estoque(vector<string> linhas)
+{
+
 }
