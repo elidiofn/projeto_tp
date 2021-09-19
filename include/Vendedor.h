@@ -1,6 +1,7 @@
 #ifndef VENDEDOR_H
 #define VENDEDOR_H
-#include <Funcionario.h>
+
+#include "Funcionario.h"
 
 
 class Vendedor : public Funcionario
