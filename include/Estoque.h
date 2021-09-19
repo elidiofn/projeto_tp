@@ -1,6 +1,7 @@
 #ifndef ESTOQUE_H
 #define ESTOQUE_H
 
+#include "Produto.h"
 #include "MaterialConstrucao.h"
 #include "MaterialEletrico.h"
 #include "MaterialHidraulico.h"
@@ -8,9 +9,12 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <algorithm>
 using std::string;
 using std::vector;
 using std::pair;
+using std::make_pair;
+using std::to_string;
 
 class Estoque
 {
@@ -18,18 +22,15 @@ class Estoque
         Estoque();
         ~Estoque();
         void salvar_estoque();
-        int busca_produto(string);
-        void entrada(string, int);
-        void saida(string, int);
+        pair<Produto*, int> busca_produto(string);
+        void entrada(Produto*, int);
+        void saida(Produto*, int);
         string impr_estoque();
 
     private:
-        vector<pair<MaterialConstrucao, int>> est_material_construcao;
-        vector<pair<MaterialEletrico, int>> est_material_eletrico;
-        vector<pair<MaterialHidraulico, int>> est_material_hidraulico;
-        vector<pair<Ferramenta, int>> est_ferramenta;
+        vector<pair<Produto*, int>> produtos;
         void carregar_estoque();
-        string busca_produto_est(string);
+        int busca_indice_produto(string);
 };
 
 #endif // ESTOQUE_H

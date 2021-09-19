@@ -1,8 +1,14 @@
 #ifndef VENDA_H
 #define VENDA_H
 
-#include "Produto.h"
+#include "Funcionario.h"
+#include "Gerente.h"
 #include "Vendedor.h"
+#include "Produto.h"
+#include "MaterialConstrucao.h"
+#include "MaterialEletrico.h"
+#include "MaterialHidraulico.h"
+#include "Ferramenta.h"
 
 #include <vector>
 #include <string>
@@ -13,20 +19,21 @@ class Venda
 {
     public:
         Venda();
-        Venda(string);
+        Venda(string, Funcionario*);
         ~Venda();
         float get_valor();
         float get_valor_avista();
-        Vendedor get_vendedor();
-        void set_vendedor(Vendedor);
+        Funcionario* get_vendedor();
+        void set_vendedor(Funcionario*);
         string get_data();
         void add_intem(Produto*);
         void remover_item(Produto*);
+        vector<Produto*> get_produtos();
         string to_string();
     private:
-        vector<string> itens;
+        vector<Produto*> itens;
         string data;
-        Vendedor vendedor;
+        Funcionario* vendedor;
         float valor_prazo;
         float valor_avista;
 };

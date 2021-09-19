@@ -12,7 +12,7 @@ class MaterialEletrico : public Produto
         ~MaterialEletrico();
         float get_preco_avista();
         string to_string();
-
+        string get_tipo();
     private:
         static int DESCONTO;
 };

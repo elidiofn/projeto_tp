@@ -15,6 +15,7 @@ class Produto
         float get_preco();
         void set_preco(float);
         virtual float get_preco_avista();
+        virtual string get_tipo();
         virtual string to_string();//string que representa o objeto.
 
     protected:

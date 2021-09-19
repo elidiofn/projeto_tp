@@ -12,6 +12,7 @@ class MaterialConstrucao : public Produto
         ~MaterialConstrucao();
         float get_preco_avista();
         string to_string();
+        string get_tipo();
 
     private:
         static int DESCONTO;

@@ -8,9 +8,11 @@ class Gerente : public Funcionario
 {
     public:
         Gerente();
-        Gerente(string, string, string, float);
+        Gerente(string, string, string, float, string);
         ~Gerente();
+        void set_comissao(float);
         float get_salario();
+        string get_tipo();
 
     private:
         float comissao;

@@ -3,6 +3,10 @@
 
 #include "Produto.h"
 #include "Gerente.h"
+#include "MaterialConstrucao.h"
+#include "MaterialEletrico.h"
+#include "MaterialHidraulico.h"
+#include "Ferramenta.h"
 
 #include <string>
 #include <vector>
@@ -23,9 +27,10 @@ class Compra
         Gerente get_comprador();
         void add_intem(Produto*);
         void remover_item(Produto*);
+        vector<Produto*> get_produtos();
         string to_string();
     private:
-        vector<string> itens;
+        vector<Produto*> itens;
         string data;
         Gerente comprador;
         float valor_prazo;

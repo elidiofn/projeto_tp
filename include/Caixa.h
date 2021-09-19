@@ -15,11 +15,12 @@ class Caixa
         Caixa(float);
         ~Caixa();
         float get_saldo();
-        void entrada(Venda);
-        void saida(Compra);
+        void entrada(Venda, string);
+        void saida(Compra, string);
         string get_vendas();
         string get_compras();
         string get_vendas_por_vendedor(string);
+        string to_string();
     private:
         float saldo;
         vector<Venda> vendas;
