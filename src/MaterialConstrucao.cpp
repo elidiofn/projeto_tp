@@ -16,7 +16,7 @@ float MaterialConstrucao::get_preco_avista()
 
 string MaterialConstrucao::to_string()
 {
-    return "Material Construcao, " + nome + ", " + std::to_string(preco_compra) + ", " + std::to_string(preco_venda) + ", " + std::to_string(get_preco_avista());
+    return "Material Construcao;" + nome + ";" + std::to_string(preco_compra) + ";" + std::to_string(preco_venda) + ";" + std::to_string(get_preco_avista());
 }
 
 string MaterialConstrucao::get_tipo()

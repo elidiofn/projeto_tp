@@ -2,11 +2,11 @@
 
 Funcionario::Funcionario(){}
 
-Funcionario::Funcionario(string nome, string data_nascimento, string rg, float salario_base, string senha)
+Funcionario::Funcionario(string nome, string data_nascimento, string cpf, float salario_base, string senha)
 {
     this->nome = nome;
     this->data_nascimento = data_nascimento;
-    this->rg = rg;
+    this->cpf = cpf;
     this->salario_base = salario_base;
     this->senha = senha;
 }
@@ -33,9 +33,9 @@ void Funcionario::set_data_nascimento(string data)
     data_nascimento = data;
 }
 
-string Funcionario::get_rg()
+string Funcionario::get_cpf()
 {
-    return rg;
+    return cpf;
 }
 
 bool Funcionario::verificar_senha(string senha)
@@ -47,9 +47,9 @@ bool Funcionario::verificar_senha(string senha)
     return false;
 }
 
-void Funcionario::set_rg(string rg)
+void Funcionario::set_cpf(string cpf)
 {
-    this->rg = rg;
+    this->cpf = cpf;
 }
 
 float Funcionario::get_salario()
@@ -60,6 +60,11 @@ float Funcionario::get_salario()
 string Funcionario::get_senha()
 {
     return senha;
+}
+
+string Funcionario::get_salario_detalhes()
+{
+
 }
 
 void Funcionario::set_comissao(float comissao)

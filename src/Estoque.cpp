@@ -2,7 +2,7 @@
 
 Estoque::Estoque()
 {
-    ler_estoque();
+   ler_estoque();
 }
 
 Estoque::~Estoque()
@@ -43,31 +43,12 @@ void Estoque::entrada(Produto* produto, int quantidade)
     }
     else
     {
-        string nome = produto->get_nome();
-        float preco_compra = produto->get_preco_compra();
-        float preco_venda = produto->get_preco();
-
-        if(produto->get_tipo() == "Material Construção")
-        {
-            produtos.push_back(make_pair(new MaterialConstrucao(nome, preco_compra, preco_venda), quantidade));
-        }
-        else if(produto->get_tipo() == "Material Elétrico")
-        {
-            produtos.push_back(make_pair(new MaterialEletrico(nome, preco_compra, preco_venda), quantidade));
-        }
-        else if(produto->get_tipo() == "Material Hidráulico")
-        {
-            produtos.push_back(make_pair(new MaterialHidraulico(nome, preco_compra, preco_venda), quantidade));
-        }
-        else if(produto->get_tipo() == "Ferramenta")
-        {
-            produtos.push_back(make_pair(new Ferramenta(nome, preco_compra, preco_venda), quantidade));
-        }
+        cria_produto(produto->to_string(), quantidade);
     }
     string entrada = "";
     for(int i =0; i < produtos.size(); i++)
     {
-        entrada += "< " + produtos[i].first->to_string() + " >< " + std::to_string(produtos[i].second) + " >\n";
+        entrada += "<" + produtos[i].first->to_string() + "><" + std::to_string(produtos[i].second) + ">\n";
     }
     salvar_estoque(entrada);
 }
@@ -82,7 +63,7 @@ void Estoque::saida(Produto* produto, int quantidade)
     string entrada = "";
     for(int i =0; i < produtos.size(); i++)
     {
-        entrada += "< " + produtos[i].first->to_string() + " >< " + std::to_string(produtos[i].second) + " >\n";
+        entrada += "<" + produtos[i].first->to_string() + "><" + std::to_string(produtos[i].second) + ">\n";
     }
     salvar_estoque(entrada);
 }
@@ -101,17 +82,31 @@ string Estoque::impr_estoque()
 void Estoque::ler_estoque()
 {
     string linha;
-    vector<string> linhas;
+    int quantidade;
     ifstream arquivoREAD;
     arquivoREAD.open("estoque.txt");
     if(arquivoREAD.is_open())
     {
         while(getline(arquivoREAD, linha))
         {
-            linhas.push_back(linha);
+            string produto = "", qtd = "";
+            int indice = 1;
+            while(linha[indice] != '>' && indice <linha.size())
+            {
+                produto += linha[indice];
+                indice++;
+            }
+            indice+=2;
+            while(linha[indice] != '>')
+            {
+                qtd += linha[indice];
+                indice++;
+            }
+            quantidade = std::stoi(qtd);
+            cria_produto(produto, quantidade);
         }
+
     }
-    carregar_estoque(linhas);
 }
 
 //Retorna o indice do produto no estoque ou -1 se não houver.
@@ -124,7 +119,50 @@ int Estoque::busca_indice_produto(string nome)
     }
     return -1;
 }
- void Estoque::carregar_estoque(vector<string> linhas)
+ void Estoque::cria_produto(string produto, int quantidade)
 {
-
+    int indice = 0;
+    string tipo = "", nome = "", pc = "", pv = "";
+    float preco_compra, preco_venda;
+    while(produto[indice] != ';')
+    {
+        tipo += produto[indice];
+        indice++;
+    }
+    indice ++;
+    while(produto[indice] != ';')
+    {
+        nome += produto[indice];
+        indice++;
+    }
+    indice ++;
+    while(produto[indice] != ';')
+    {
+        pc += produto[indice];
+        indice++;
+    }
+    indice ++;
+    while(produto[indice] != ';')
+    {
+        pv += produto[indice];
+        indice++;
+    }
+    preco_compra = std::stof(pc);
+    preco_venda = std::stof(pv);
+    if(tipo == "Material Construcao")
+    {
+         produtos.push_back(make_pair(new MaterialConstrucao(nome, preco_compra, preco_venda), quantidade));
+    }
+    else if(tipo == "Material Eletrico")
+    {
+         produtos.push_back(make_pair(new MaterialEletrico(nome, preco_compra, preco_venda), quantidade));
+    }
+    else if(tipo == "Material Hidraulico")
+    {
+        produtos.push_back(make_pair(new MaterialHidraulico(nome, preco_compra, preco_venda), quantidade));
+    }
+    else if(tipo == "Ferramenta")
+    {
+         produtos.push_back(make_pair(new Ferramenta(nome, preco_compra, preco_venda), quantidade));
+    }
 }

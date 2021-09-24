@@ -14,7 +14,7 @@ float Ferramenta::get_preco_avista()
 }
 string Ferramenta::to_string()
 {
-    return "Ferramenta, " + nome + ", " + std::to_string(preco_compra) + ", " + std::to_string(preco_venda) + ", " + std::to_string(get_preco_avista());
+    return "Ferramenta;" + nome + ";" + std::to_string(preco_compra) + ";" + std::to_string(preco_venda) + ";" + std::to_string(get_preco_avista());
 }
 
 string Ferramenta::get_tipo()

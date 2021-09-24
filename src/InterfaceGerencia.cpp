@@ -1,4 +1,3 @@
-#include "InterfaceGerente.h"
 #include "Funcionario.h"
 #include "Vendedor.h"
 #include "Gerente.h"
@@ -6,6 +5,7 @@
 #include "Compra.h"
 #include "Caixa.h"
 #include "Estoque.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -21,96 +21,23 @@ extern Gerente gerente;
 extern Estoque estoque;
 extern Caixa caixa;
 
-void menu_gerente()
-{
-    int opcao = 0;
-    while(opcao != 9)
-    {
-        system("cls");
-        cout << "=============================Menu Gerente===================================\n";
-        cout << "1 - CADASTRAR VENDEDOR\n";
-        cout << "2 - EXCLUIR VENDEDOR\n";
-        cout << "3 - EXIBIR FUNCIONARIOS\n";
-        cout << "4 - REALIZAR COMPRA\n";
-        cout << "5 - REALIZAR VENDA\n";
-        cout << "6 - RELATÓRIO DE VENDAS\n";
-        cout << "7 - RELATÓRIO ESTOQUE\n";
-        cout << "8 - RELATÓRIO CAIXA\n";
-        cout << "9 - SAIR\n";
-        cout << "SELECIONE A OPÇÃO DESEJADA: ";
-        cin >> opcao;
-        cout << "\n=============================================================================\n";
-        cin.ignore();
-        switch(opcao)
-        {
-            case 1:
-                system("cls");
-                cadastrar_vendedor();
-                system("pause");
-                opcao = 0;
-                break;
-            case 2:
-                system("cls");
-                excluir_vendedor();
-                system("pause");
-                opcao = 0;
-                break;
-            case 3:
-                system("cls");
-                exibir_vendedores();
-                system("pause");
-                opcao = 0;
-                break;
-            case 4:
-                system("cls");
-                realizar_compra();
-                system("pause");
-                opcao = 0;
-                break;
-            case 5:
-                system("cls");
-                realizar_venda_gerente();
-                system("pause");
-                opcao = 0;
-                break;
-            case 6:
-                system("cls");
-                relatorio_vendas();
-                system("pause");
-                opcao = 0;
-                break;
-            case 7:
-                system("cls");
-                relatorio_estoque();
-                system("pause");
-                opcao = 0;
-                break;
-            case 8:
-                system("cls");
-                relatorio_caixa();
-                system("pause");
-                opcao = 0;
-                break;
-        }
-    }
-}
 void cadastrar_vendedor()
 {
-    string nome, data_nasc, rg, senha;
+    string nome, data_nasc, cpf, senha;
     float sal;
     cout << "============================CADASTRAR VENDEDOR==============================\n";
     cout << "DIGITE O NOME: ";
     getline(cin, nome);
     cout << "DIGITE A DATA DE NASCIMENTO(DD/MM/AAAA): ";
     getline(cin, data_nasc);
-    cout << "DIGITE O RG: ";
-    getline(cin, rg);
+    cout << "DIGITE O CPF(SOMENTE NÚMEROS): ";
+    getline(cin, cpf);
     cout << "DIGITE A SENHA: ";
     getline(cin, senha);
     cout << "DIGITE O SALÁRIO: ";
     cin >> sal;
     cin.ignore();
-    Vendedor vend = Vendedor(nome, data_nasc, rg, sal, senha);
+    Vendedor vend = Vendedor(nome, data_nasc, cpf, sal, senha);
     vendedores.push_back(vend);
     cout << "\n============================================================================\n";
 }
@@ -202,7 +129,7 @@ void realizar_venda_gerente()
     getline(cin, data);
     string nome = gerente.get_nome();
     string data_nasc = gerente.get_data_nascimento();
-    string rg = gerente.get_rg();
+    string rg = gerente.get_cpf();
     string senha = gerente.get_senha();
     float sal = gerente.get_salario();
     Funcionario* ge = new Gerente(nome,data_nasc, rg, sal, senha);
@@ -251,4 +178,92 @@ void relatorio_caixa()
     cout << "=============================RELATÓRIO CAIXA=================================\n";
     cout << caixa.to_string();
     cout << "\n=============================================================================\n";
+}
+
+void consultar_salario_gerente()
+{
+    cout << "\n===========================SALÁRIO===========================================\n";
+    cout << gerente.get_salario_detalhes();
+    cout << "\n=============================================================================\n";
+}
+
+void menu_gerente()
+{
+    int opcao = 0;
+    while(opcao != 10)
+    {
+        system("cls");
+        cout << "=============================Menu Gerente===================================\n";
+        cout << "1 - CADASTRAR VENDEDOR\n";
+        cout << "2 - EXCLUIR VENDEDOR\n";
+        cout << "3 - EXIBIR FUNCIONARIOS\n";
+        cout << "4 - REALIZAR COMPRA\n";
+        cout << "5 - REALIZAR VENDA\n";
+        cout << "6 - RELATÓRIO DE VENDAS\n";
+        cout << "7 - RELATÓRIO ESTOQUE\n";
+        cout << "8 - RELATÓRIO CAIXA\n";
+        cout << "9 - CONSULTAR SALÁRIO\n";
+        cout << "10 - SAIR\n";
+        cout << "SELECIONE A OPÇÃO DESEJADA: ";
+        cin >> opcao;
+        cout << "\n=============================================================================\n";
+        cin.ignore();
+        switch(opcao)
+        {
+            case 1:
+                system("cls");
+                cadastrar_vendedor();
+                system("pause");
+                opcao = 0;
+                break;
+            case 2:
+                system("cls");
+                excluir_vendedor();
+                system("pause");
+                opcao = 0;
+                break;
+            case 3:
+                system("cls");
+                exibir_vendedores();
+                system("pause");
+                opcao = 0;
+                break;
+            case 4:
+                system("cls");
+                realizar_compra();
+                system("pause");
+                opcao = 0;
+                break;
+            case 5:
+                system("cls");
+                realizar_venda_gerente();
+                system("pause");
+                opcao = 0;
+                break;
+            case 6:
+                system("cls");
+                relatorio_vendas();
+                system("pause");
+                opcao = 0;
+                break;
+            case 7:
+                system("cls");
+                relatorio_estoque();
+                system("pause");
+                opcao = 0;
+                break;
+            case 8:
+                system("cls");
+                relatorio_caixa();
+                system("pause");
+                opcao = 0;
+                break;
+            case 9:
+                system("cls");
+                consultar_salario_gerente();
+                system("pause");
+                opcao = 0;
+                break;
+        }
+    }
 }

@@ -1,8 +1,8 @@
-#include "InterfaceVendedor.h"
 #include "Caixa.h"
 #include "Estoque.h"
 #include "Venda.h"
 #include "Funcionario.h"
+
 #include <iostream>
 #include <string>
 using std::cout;
@@ -14,45 +14,6 @@ extern Estoque estoque;
 extern Funcionario* vendedor_uso;
 extern Caixa caixa;
 
-
-void menu_vendedor()
-{
-    int opcao = 0;
-    while(opcao != 4)
-    {
-        system("cls");
-        cout << "=============================Menu Vendedor===================================\n";
-        cout << "1 - REALIZAR VENDA\n";
-        cout << "2 - RELATÓRIO MINHAS VENDAS\n";
-        cout << "3 - CONSULTAR ESTOQUE\n";
-        cout << "4 - SAIR\n";
-        cout << " SELECIONE A OPÇÃO DESEJADA: ";
-        cin >> opcao;
-        cout << "\n==============================================================================\n";
-        cin.ignore();
-        switch(opcao)
-        {
-            case 1:
-                system("cls");
-                realizar_venda();
-                opcao = 0;
-                system("pause");
-                break;
-            case 2:
-                system("cls");
-                relatorio_minhas_vendas();
-                opcao = 0;
-                system("pause");
-                break;
-            case 3:
-                system("cls");
-                consultar_estoque();
-                opcao = 0;
-                system("pause");
-                break;
-        }
-    }
-}
 void realizar_venda()
 {
     string data, nome_produto = "", pagamento;
@@ -100,4 +61,57 @@ void consultar_estoque()
     getline(cin, nome_produto);
     cout << estoque.busca_produto(nome_produto).second;
     cout << "\n=============================================================================\n";
+}
+
+void consultar_salario()
+{
+    cout << "\n=======================SALÁRIO==============================================\n";
+    cout << vendedor_uso->get_salario_detalhes();
+    cout << "\n=============================================================================\n";
+}
+
+void menu_vendedor()
+{
+    int opcao = 0;
+    while(opcao != 5)
+    {
+        system("cls");
+        cout << "=============================Menu Vendedor===================================\n";
+        cout << "1 - REALIZAR VENDA\n";
+        cout << "2 - RELATÓRIO MINHAS VENDAS\n";
+        cout << "3 - CONSULTAR ESTOQUE\n";
+        cout << "4 - CONSULTAR SALÁRIO\n";
+        cout << "5 - SAIR\n";
+        cout << " SELECIONE A OPÇÃO DESEJADA: ";
+        cin >> opcao;
+        cout << "\n==============================================================================\n";
+        cin.ignore();
+        switch(opcao)
+        {
+            case 1:
+                system("cls");
+                realizar_venda();
+                opcao = 0;
+                system("pause");
+                break;
+            case 2:
+                system("cls");
+                relatorio_minhas_vendas();
+                opcao = 0;
+                system("pause");
+                break;
+            case 3:
+                system("cls");
+                consultar_estoque();
+                opcao = 0;
+                system("pause");
+                break;
+            case 4:
+                system("cls");
+                consultar_salario();
+                opcao = 0;
+                system("pause");
+                break;
+        }
+    }
 }

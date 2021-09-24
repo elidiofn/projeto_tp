@@ -11,7 +11,7 @@ Venda::Venda(string data, Funcionario* vendedor)
 {
     string nome = vendedor->get_nome();
     string data_nasc = vendedor->get_data_nascimento();
-    string rg = vendedor->get_rg();
+    string rg = vendedor->get_cpf();
     string senha = vendedor->get_senha();
     float sal = vendedor->get_salario();
     if(vendedor->get_tipo() == "Vendedor")
@@ -49,7 +49,7 @@ void Venda::set_vendedor(Funcionario* vendedor)
 {
     string nome = vendedor->get_nome();
     string data_nasc = vendedor->get_data_nascimento();
-    string rg = vendedor->get_rg();
+    string rg = vendedor->get_cpf();
     string senha = vendedor->get_senha();
     float sal = vendedor->get_salario();
     if(vendedor->get_tipo() == "Vendedor")
