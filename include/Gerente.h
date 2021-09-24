@@ -12,6 +12,7 @@ class Gerente : public Funcionario
         ~Gerente();
         void set_comissao(float);
         float get_salario();
+        string get_salario_detalhes();
         string get_tipo();
         string to_string();
 

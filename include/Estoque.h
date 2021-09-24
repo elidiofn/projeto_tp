@@ -6,6 +6,7 @@
 #include "MaterialEletrico.h"
 #include "MaterialHidraulico.h"
 #include "Ferramenta.h"
+
 #include <string>
 #include <vector>
 #include <utility>
@@ -33,9 +34,10 @@ class Estoque
 
     private:
         vector<pair<Produto*, int>> produtos;
+
         void ler_estoque();
         int busca_indice_produto(string);
-        void carregar_estoque(vector<string>);
+        void cria_produto(string, int);
 };
 
 #endif // ESTOQUE_H

@@ -14,10 +14,11 @@ class Funcionario
         void set_nome(string);
         string get_data_nascimento();
         void set_data_nascimento(string);
-        string get_rg();
-        void set_rg(string);
+        string get_cpf();
+        void set_cpf(string);
         bool verificar_senha(string);
         string get_senha();
+        virtual string get_salario_detalhes();
         virtual float get_salario();
         virtual void set_comissao(float);
         virtual string get_tipo();
@@ -27,7 +28,7 @@ class Funcionario
     private:
         string nome;
         string data_nascimento;
-        string rg;
+        string cpf;
         string senha;
 };
 
