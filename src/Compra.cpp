@@ -1,38 +1,33 @@
 #include "Compra.h"
-#include "Produto.h"
-
-#include <string>
-#include <vector>
-using std::string;
-using std::vector;
 
 Compra::Compra()
 {
-    valor_prazo = 0;
-    valor_avista = 0;
+    valor_total = 0;
 }
 
 Compra::Compra(string data, Gerente ge)
 {
     this->data = data;
     comprador = ge;
-    valor_prazo = 0;
-    valor_avista = 0;
+    valor_total = 0;
 }
 
 Compra::~Compra()
 {
 }
 
-float Compra::get_valor()
+float Compra::get_valor(string forma_pagamento)
 {
-    return valor_prazo;
+    if(forma_pagamento == "av")
+    {
+        valor_total = valor_total - (valor_total * 0.10); // desconto de compra a vista
+    }
+    return valor_total;
 }
 
-float Compra::get_valor_avista()
+float Compra::get_total()
 {
-    valor_avista = valor_prazo - (valor_prazo*0.1);
-    return valor_avista;
+    return valor_total;
 }
 
 void Compra::set_comprador(Gerente ge)
@@ -72,7 +67,7 @@ void Compra::add_intem(Produto* novo)
     {
         itens.push_back(new Ferramenta(nome,preco_compra, preco_venda));
     }
-    valor_prazo += novo->get_preco_compra();
+    valor_total += novo->get_preco_compra();
 }
 
 void Compra::remover_item(Produto* item)
@@ -80,8 +75,7 @@ void Compra::remover_item(Produto* item)
     for(int i = 0; i < itens.size(); i++){
         if(itens[i]->get_nome() == item->get_nome()){
             itens.erase(itens.begin()+i);
-            valor_prazo -= item->get_preco();
-            valor_avista -= item->get_preco_avista();
+            valor_total -= item->get_preco_compra();
         }
     }
 }
@@ -97,7 +91,21 @@ string Compra::to_string()
     for(int i=0;i<itens.size();i++){
         compra += itens[i]->to_string() + "\n";
    }
-   compra += "Valor Total a Prazo: " + std::to_string(valor_prazo);
-   compra += "\nValor Total com Desconto de à Vista: " + std::to_string(get_valor_avista()) + "\n========================\n";
+   compra += "Valor Total: " + std::to_string(valor_total);
+   compra += "\n========================\n";
    return compra;
+ }
+
+ string Compra::get_compra()
+ {
+    string compra = "";
+    compra += "{";
+    compra += "(" + get_data() + ")";
+    compra += comprador.to_string();
+    for(int i = 0; i < itens.size(); i++)
+    {
+        compra += "[" + itens[i]->to_string() + "]";
+    }
+    compra += "}";
+    return compra;
  }

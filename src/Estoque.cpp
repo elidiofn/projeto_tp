@@ -73,7 +73,7 @@ string Estoque::impr_estoque()
     string relatorio = "\n=================================ESTOQUE=====================================\n";
     for(int i = 0; i < produtos.size(); i++)
     {
-        relatorio += "Produto: " + produtos[i].first->get_nome() + "\nQuantidade: " + to_string( produtos[i].second) + "\n";
+        relatorio += "Produto: " + produtos[i].first->get_nome() + "\nQuantidade: " + std::to_string( produtos[i].second) + "\n";
     }
     relatorio +=       "\n=============================================================================\n";
     return relatorio;
@@ -147,6 +147,10 @@ int Estoque::busca_indice_produto(string nome)
         pv += produto[indice];
         indice++;
     }
+    int a = pc.find(',');
+    int b = pv.find(',');
+    pc.replace(a, a, ".");
+    pv.replace(b, b, ".");
     preco_compra = std::stof(pc);
     preco_venda = std::stof(pv);
     if(tipo == "Material Construcao")

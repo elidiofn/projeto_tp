@@ -42,10 +42,10 @@ string Vendedor::get_tipo()
 string Vendedor::to_string()
 {
     string ob = "";
-    ob += get_tipo() + "," + get_nome() + ",";
-    ob += get_data_nascimento() + "," ;
-    ob += get_cpf() + ",";
-    ob += std::to_string(get_salario()) + ",";
+    ob += get_tipo() + ";" + get_nome() + ";";
+    ob += get_data_nascimento() + ";" ;
+    ob += get_cpf() + ";";
+    ob += std::to_string(get_salario()) + ";";
     ob += get_senha();
     return ob;
 }

@@ -2,8 +2,7 @@
 
 Venda::Venda()
 {
-    valor_avista = 0;
-    valor_prazo = 0;
+    valor_total = 0;
     vendedor = new Vendedor("", "00/00/00", "0000", 0.0, "");
 }
 
@@ -22,22 +21,30 @@ Venda::Venda(string data, Funcionario* vendedor)
         this->vendedor = new Gerente(nome, data_nasc, rg, sal, senha);
     }
     this->data = data;
-    valor_prazo = 0;
-    valor_avista = 0;
-
+    valor_total = 0;
 }
+
 Venda::~Venda()
 {
 }
 
-float Venda::get_valor()
+float Venda::get_valor(string forma_pagamento)
 {
-  return this->valor_prazo;
+    float va = 0;
+    if(forma_pagamento == "av")
+    {
+        for(int i =0; i < itens.size(); i++)
+        {
+            va += itens[i]->get_preco_avista();
+        }
+        valor_total = va;
+    }
+    return valor_total;
 }
 
-float Venda::get_valor_avista()
+float Venda::get_total()
 {
-  return this->valor_avista;
+    return valor_total;
 }
 
 Funcionario* Venda::get_vendedor()
@@ -88,8 +95,8 @@ void Venda::add_intem(Produto* novo)
     {
         itens.push_back(new Ferramenta(nome,preco_compra, preco_venda));
     }
-    valor_prazo += novo->get_preco();
-    valor_avista += novo->get_preco_avista();
+    valor_total += novo->get_preco();
+
 }
 
 void Venda::remover_item(Produto* item)
@@ -97,8 +104,7 @@ void Venda::remover_item(Produto* item)
     for(int i = 0; i < itens.size(); i++){
         if(itens[i]->get_nome() == item->get_nome()){
             itens.erase(itens.begin()+i);
-            valor_prazo -= item->get_preco();
-            valor_avista -= item->get_preco_avista();
+            valor_total -= item->get_preco();
         }
     }
 }
@@ -114,7 +120,21 @@ string Venda::to_string()
     for(int i=0;i<itens.size();i++){
         venda += itens[i]->to_string() + "\n";
    }
-   venda += "Valor Total a Prazo: " + std::to_string(valor_prazo);
-   venda += "\nValor Total com Desconto de à Vista: " + std::to_string(valor_avista) + "\n========================\n";
+   venda += "Valor Total: " + std::to_string(valor_total);
+   venda += "\n========================\n";
    return venda;
+ }
+
+ string Venda::get_venda()
+ {
+    string venda = "";
+    venda += "{";
+    venda += "(" + get_data() + ")";
+    venda += vendedor->to_string();
+    for(int i = 0; i < itens.size(); i++)
+    {
+        venda += "[" + itens[i]->to_string() + "]";
+    }
+    venda += "}";
+    return venda;
  }

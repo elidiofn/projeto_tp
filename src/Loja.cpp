@@ -16,7 +16,7 @@
 #include "Vendedor.h"
 #include "Caixa.h"
 #include "Estoque.h"
-
+#include <fstream>
 #include <iostream>
 #include <locale>
 #include <iomanip>
@@ -25,6 +25,8 @@ using std::cout;
 using std::cin;
 using std::endl;
 using std::getline;
+using std::ofstream;
+using std::ifstream;
 
 Estoque estoque;
 Caixa caixa;
@@ -53,10 +55,15 @@ void consultar_salario();
 
 void login();
 void cadastrar_gerente();
+string get_funcionarios();
+void salva_funcionarios(string);
+void ler_funcionarios();
+void cria_funcionario(string);
 
 int main()
 {
     setlocale(LC_ALL, "portuguese");
+    ler_funcionarios();
     login();
     return 0;
 }
@@ -126,5 +133,130 @@ int main()
     cout << "DIGITE O SALÁRIO: ";
     cin >> sal;
     gerente = Gerente(nome, data_nasc, cpf, sal, senha);
+    salva_funcionarios(get_funcionarios());
     cout << "\n============================================================================\n";
  }
+
+ void salva_funcionarios(string entrada)
+ {
+    ofstream arquivoWRITE;
+    arquivoWRITE.open("funcionarios.txt");
+    arquivoWRITE << entrada;
+    arquivoWRITE.close();
+ }
+
+ void ler_funcionarios()
+ {
+    string linha;
+    ifstream arquivoREAD;
+    arquivoREAD.open("funcionarios.txt");
+    if(arquivoREAD.is_open())
+    {
+        while(getline(arquivoREAD, linha))
+        {
+            cria_funcionario(linha);
+        }
+    }
+ }
+
+ void cria_funcionario(string linha)
+ {
+    if(linha[0] == 'G')
+    {
+        int i = 1;
+        string nome = "", data_nascimento = "", cpf = "", sal = "", senha = "";
+        float salario;
+        while(linha[i] != ';')
+        {
+            i++;
+        }
+        i ++;
+        while(linha[i] != ';')
+        {
+            nome += linha[i];
+            i++;
+        }
+        i ++;
+        while(linha[i] != ';')
+        {
+            data_nascimento += linha[i];
+            i++;
+        }
+        i ++;
+        while(linha[i] != ';')
+        {
+            cpf += linha[i];
+            i++;
+        }
+        i ++;
+        while(linha[i] != ';')
+        {
+            sal += linha[i];
+            i++;
+        }
+        salario = std::stof(sal);
+        i++;
+        while(i < linha.size())
+        {
+            senha += linha[i];
+            i++;
+        }
+        gerente = Gerente(nome, data_nascimento, cpf, salario, senha);
+    }
+    else
+    {
+        int i = 1;
+        string nome = "", data_nascimento = "", cpf = "", sal = "", senha = "";
+        float salario;
+        while(linha[i] != ';')
+        {
+            i++;
+        }
+        i ++;
+        while(linha[i] != ';')
+        {
+            nome += linha[i];
+            i++;
+        }
+        i ++;
+        while(linha[i] != ';')
+        {
+            data_nascimento += linha[i];
+            i++;
+        }
+        i ++;
+        while(linha[i] != ';')
+        {
+            cpf += linha[i];
+            i++;
+        }
+        i ++;
+        while(linha[i] != ';')
+        {
+            sal += linha[i];
+            i++;
+        }
+        int cr = sal.find(',');
+        sal.replace(cr, cr, ".");
+        salario = std::stof(sal);
+        i++;
+        while(i < linha.size())
+        {
+            senha += linha[i];
+            i++;
+        }
+        Vendedor v = Vendedor(nome, data_nascimento, cpf, salario, senha);
+        vendedores.push_back(v);
+    }
+ }
+
+ string get_funcionarios()
+{
+     string func = "";
+     func += gerente.to_string() + "\n";
+     for(int i = 0; i < vendedores.size(); i++)
+     {
+         func += vendedores[i].to_string() + + "\n";
+     }
+     return func;
+}

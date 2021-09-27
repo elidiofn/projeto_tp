@@ -21,6 +21,9 @@ extern Gerente gerente;
 extern Estoque estoque;
 extern Caixa caixa;
 
+string get_funcionarios();
+void salva_funcionarios(string);
+
 void cadastrar_vendedor()
 {
     string nome, data_nasc, cpf, senha;
@@ -39,6 +42,7 @@ void cadastrar_vendedor()
     cin.ignore();
     Vendedor vend = Vendedor(nome, data_nasc, cpf, sal, senha);
     vendedores.push_back(vend);
+    salva_funcionarios(get_funcionarios());
     cout << "\n============================================================================\n";
 }
 void excluir_vendedor()
