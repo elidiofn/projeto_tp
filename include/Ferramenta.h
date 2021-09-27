@@ -2,13 +2,11 @@
 #define FERRAMENTA_H
 
 #include "Produto.h"
-#include <string>
-using std::string;
 
 class Ferramenta : public Produto
 {
     public:
-        Ferramenta(string, float, float);
+        Ferramenta(string nome, float preco_compra, float preco_venda);
         ~Ferramenta();
         float get_preco_avista();
         string to_string();

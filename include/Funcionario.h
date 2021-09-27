@@ -8,19 +8,19 @@ class Funcionario
 {
     public:
         Funcionario();
-        Funcionario(string, string, string, float, string);
+        Funcionario(string nome, string data_nascimento, string cpf, float salario, string senha);
         virtual ~Funcionario();
         string get_nome();
-        void set_nome(string);
+        void set_nome(string nome);
         string get_data_nascimento();
-        void set_data_nascimento(string);
+        void set_data_nascimento(string data_nascimento);
         string get_cpf();
-        void set_cpf(string);
-        bool verificar_senha(string);
+        void set_cpf(string cpf);
+        bool verificar_senha(string senha);
         string get_senha();
         virtual string get_salario_detalhes();
         virtual float get_salario();
-        virtual void set_comissao(float);
+        virtual void set_comissao(float comissao);
         virtual string get_tipo();
         virtual string to_string();
     protected:

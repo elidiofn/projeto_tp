@@ -8,9 +8,9 @@ class Vendedor : public Funcionario
 {
     public:
         Vendedor();
-        Vendedor(string, string, string, float, string);
+        Vendedor(string nome, string data_nascimento, string cpf, float salario, string senha);
         ~Vendedor();
-        void set_comissao(float);
+        void set_comissao(float comissao);
         float get_salario();
         string get_salario_detalhes();
         string get_tipo();

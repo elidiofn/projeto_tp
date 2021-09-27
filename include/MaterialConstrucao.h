@@ -2,13 +2,11 @@
 #define MATERIALCONSTRUCAO_H
 
 #include "Produto.h"
-#include <string>
-using std::string;
 
 class MaterialConstrucao : public Produto
 {
     public:
-        MaterialConstrucao(string, float, float);
+        MaterialConstrucao(string nome, float preco_compra, float preco_venda);
         ~MaterialConstrucao();
         float get_preco_avista();
         string to_string();

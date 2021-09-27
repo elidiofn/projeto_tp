@@ -2,13 +2,11 @@
 #define MATERIALHIDRAULICO_H
 
 #include "Produto.h"
-#include <string>
-using std::string;
 
 class MaterialHidraulico : public Produto
 {
     public:
-        MaterialHidraulico(string, float, float);
+        MaterialHidraulico(string nome, float preco_compra, float preco_venda);
         ~MaterialHidraulico();
         float get_preco_avista();
         string to_string();

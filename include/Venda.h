@@ -19,22 +19,22 @@ class Venda
 {
     public:
         Venda();
-        Venda(string, Funcionario*);
+        Venda(string data, Funcionario* vendedor);
         ~Venda();
-        float get_valor();
-        float get_valor_avista();
+        float get_valor(string forma_pagamento);
+        float get_total();
         Funcionario* get_vendedor();
-        void set_vendedor(Funcionario*);
+        void set_vendedor(Funcionario* vendedor);
         string get_data();
-        void add_intem(Produto*);
-        void remover_item(Produto*);
+        void add_intem(Produto* produto);
+        void remover_item(Produto* produto);
         vector<Produto*> get_produtos();
         string to_string();
+        string get_venda();
     private:
         vector<Produto*> itens;
         string data;
         Funcionario* vendedor;
-        float valor_prazo;
-        float valor_avista;
+        float valor_total;
 };
 #endif // VENDA_H

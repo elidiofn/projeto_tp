@@ -3,10 +3,24 @@
 
 #include "Venda.h"
 #include "Compra.h"
-#include<vector>
-#include<string>
+#include "Estoque.h"
+#include "Produto.h"
+#include "MaterialConstrucao.h"
+#include "MaterialEletrico.h"
+#include "MaterialHidraulico.h"
+#include "Ferramenta.h"
+#include "Funcionario.h"
+#include "Gerente.h"
+#include "Vendedor.h"
+
+#include <vector>
+#include <string>
+#include <fstream>
 using std::vector;
 using std::string;
+using std::ofstream;
+using std::ifstream;
+using std::getline;
 
 class Caixa
 {
@@ -25,6 +39,11 @@ class Caixa
         float saldo;
         vector<Venda> vendas;
         vector<Compra> compras;
+
+        void salva_caixa(string);
+        void ler_caixa();
+        void cria_caixa(string);
+        string situacao_caixa();
 };
 
 #endif // CAIXA_H

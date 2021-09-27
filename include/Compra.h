@@ -20,8 +20,8 @@ class Compra
         Compra();
         Compra(string, Gerente);
         ~Compra();
-        float get_valor();
-        float get_valor_avista();
+        float get_valor(string);
+        float get_total();
         string get_data();
         void set_comprador(Gerente);
         Gerente get_comprador();
@@ -29,12 +29,12 @@ class Compra
         void remover_item(Produto*);
         vector<Produto*> get_produtos();
         string to_string();
+        string get_compra();
     private:
         vector<Produto*> itens;
         string data;
         Gerente comprador;
-        float valor_prazo;
-        float valor_avista;
+        float valor_total;
 };
 
 #endif // COMPRA_H

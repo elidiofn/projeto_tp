@@ -2,13 +2,11 @@
 #define MATERIALELETRICO_H
 
 #include "Produto.h"
-#include <string>
-using std::string;
 
 class MaterialEletrico : public Produto
 {
     public:
-        MaterialEletrico(string, float, float);
+        MaterialEletrico(string nome, float preco_compra, float preco_venda);
         ~MaterialEletrico();
         float get_preco_avista();
         string to_string();
