@@ -124,3 +124,170 @@
 
 1630196084 c:\users\elidio\source\projeto_tp-main\src\interfacegerencia.cpp
 
+1632764341 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\caixa.cpp
+	"Caixa.h"
+
+1632753050 d:\outros\dev\tecnicas de programação\projeto_tp-main\include\caixa.h
+	"Venda.h"
+	"Compra.h"
+	"Estoque.h"
+	"Produto.h"
+	"MaterialConstrucao.h"
+	"MaterialEletrico.h"
+	"MaterialHidraulico.h"
+	"Ferramenta.h"
+	"Funcionario.h"
+	"Gerente.h"
+	"Vendedor.h"
+	<vector>
+	<string>
+	<fstream>
+
+1632765495 d:\outros\dev\tecnicas de programação\projeto_tp-main\include\venda.h
+	"Funcionario.h"
+	"Gerente.h"
+	"Vendedor.h"
+	"Produto.h"
+	"MaterialConstrucao.h"
+	"MaterialEletrico.h"
+	"MaterialHidraulico.h"
+	"Ferramenta.h"
+	<vector>
+	<string>
+
+1632765429 d:\outros\dev\tecnicas de programação\projeto_tp-main\include\produto.h
+	<string>
+
+1632765610 d:\outros\dev\tecnicas de programação\projeto_tp-main\include\vendedor.h
+	"Funcionario.h"
+
+1632765561 d:\outros\dev\tecnicas de programação\projeto_tp-main\include\funcionario.h
+	<string>
+
+1632693605 d:\outros\dev\tecnicas de programação\projeto_tp-main\include\compra.h
+	"Produto.h"
+	"Gerente.h"
+	"MaterialConstrucao.h"
+	"MaterialEletrico.h"
+	"MaterialHidraulico.h"
+	"Ferramenta.h"
+	<string>
+	<vector>
+
+1632765649 d:\outros\dev\tecnicas de programação\projeto_tp-main\include\gerente.h
+	"Funcionario.h"
+
+1632766174 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\compra.cpp
+	"Compra.h"
+
+1632766026 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\ferramenta.cpp
+	"Ferramenta.h"
+
+1632765754 d:\outros\dev\tecnicas de programação\projeto_tp-main\include\ferramenta.h
+	"Produto.h"
+
+1632439809 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\funcionario.cpp
+	"Funcionario.h"
+
+1632754446 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\gerente.cpp
+	"Gerente.h"
+
+1632760055 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\interfacegerencia.cpp
+	"Funcionario.h"
+	"Vendedor.h"
+	"Gerente.h"
+	"Venda.h"
+	"Compra.h"
+	"Caixa.h"
+	"Estoque.h"
+	<iostream>
+	<string>
+	<vector>
+
+1632440672 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\interfacevendedor.cpp
+	"Caixa.h"
+	"Estoque.h"
+	"Venda.h"
+	"Funcionario.h"
+	<iostream>
+	<string>
+
+1632764925 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\loja.cpp
+	"Funcionario.h"
+	"Gerente.h"
+	"Vendedor.h"
+	"Caixa.h"
+	"Estoque.h"
+	<fstream>
+	<iostream>
+	<locale>
+	<iomanip>
+	<string>
+
+1632765735 d:\outros\dev\tecnicas de programação\projeto_tp-main\include\materialconstrucao.h
+	"Produto.h"
+
+1632765742 d:\outros\dev\tecnicas de programação\projeto_tp-main\include\materialeletrico.h
+	"Produto.h"
+
+1632765748 d:\outros\dev\tecnicas de programação\projeto_tp-main\include\materialhidraulico.h
+	"Produto.h"
+
+1632765266 d:\outros\dev\tecnicas de programação\projeto_tp-main\include\estoque.h
+	"Produto.h"
+	"MaterialConstrucao.h"
+	"MaterialEletrico.h"
+	"MaterialHidraulico.h"
+	"Ferramenta.h"
+	<string>
+	<vector>
+	<utility>
+	<algorithm>
+	<fstream>
+
+1632012721 d:\outros\dev\tecnicas de programação\projeto_tp-main\src\interfacevendedor.cpp
+	"InterfaceVendedor.h"
+	"Caixa.h"
+	"Estoque.h"
+	"Venda.h"
+	"Funcionario.h"
+	<iostream>
+	<string>
+
+1632009924 d:\outros\dev\tecnicas de programação\projeto_tp-main\src\interfacegerencia.cpp
+	"Funcionario.h"
+	"Vendedor.h"
+	"Gerente.h"
+	"Venda.h"
+	"Compra.h"
+	"Caixa.h"
+	"Estoque.h"
+	<iostream>
+	<string>
+	<vector>
+
+1632429644 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\materialconstrucao.cpp
+	"MaterialConstrucao.h"
+
+1632429684 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\materialeletrico.cpp
+	"MaterialEletrico.h"
+
+1632429702 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\materialhidraulico.cpp
+	"MaterialHidraulico.h"
+
+1631980216 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\produto.cpp
+	"Produto.h"
+
+1632766182 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\venda.cpp
+	"Venda.h"
+
+1632754854 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\vendedor.cpp
+	"Vendedor.h"
+
+1632764987 source:d:\outros\dev\tecnicas de programação\projeto_tp-main\src\estoque.cpp
+	"Estoque.h"
+
+1632012688 d:\outros\dev\tecnicas de programação\projeto_tp-main\include\interfacevendedor.h
+
+1632056934 d:\outros\dev\tecnicas de programação\projeto_tp-main\include\interfacegerente.h
+
