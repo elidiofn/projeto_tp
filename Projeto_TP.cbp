@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Projeto_TP" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Projeto_TP" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Projeto_TP" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="include/Caixa.h" />
+		<Unit filename="include/Compra.h" />
+		<Unit filename="include/Estoque.h" />
+		<Unit filename="include/Ferramenta.h" />
+		<Unit filename="include/Funcionario.h" />
+		<Unit filename="include/Gerente.h" />
+		<Unit filename="include/MaterialConstrucao.h" />
+		<Unit filename="include/MaterialEletrico.h" />
+		<Unit filename="include/MaterialHidraulico.h" />
+		<Unit filename="include/Produto.h" />
+		<Unit filename="include/Venda.h" />
+		<Unit filename="include/Vendedor.h" />
+		<Unit filename="src/Caixa.cpp" />
+		<Unit filename="src/Compra.cpp" />
+		<Unit filename="src/Estoque.cpp" />
+		<Unit filename="src/Ferramenta.cpp" />
+		<Unit filename="src/Funcionario.cpp" />
+		<Unit filename="src/Gerente.cpp" />
+		<Unit filename="src/InterfaceGerencia.cpp" />
+		<Unit filename="src/InterfaceVendedor.cpp" />
+		<Unit filename="src/Loja.cpp" />
+		<Unit filename="src/MaterialConstrucao.cpp" />
+		<Unit filename="src/MaterialEletrico.cpp" />
+		<Unit filename="src/MaterialHidraulico.cpp" />
+		<Unit filename="src/Produto.cpp" />
+		<Unit filename="src/Venda.cpp" />
+		<Unit filename="src/Vendedor.cpp" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
