@@ -18,15 +18,15 @@ class Compra
 {
     public:
         Compra();
-        Compra(string, Gerente);
+        Compra(string data, Gerente gerente);
         ~Compra();
-        float get_valor(string);
+        float get_valor(string forma_pagamento);
         float get_total();
         string get_data();
-        void set_comprador(Gerente);
+        void set_comprador(Gerente gerente);
         Gerente get_comprador();
-        void add_intem(Produto*);
-        void remover_item(Produto*);
+        void add_intem(Produto* produto);
+        void remover_item(Produto* produto);
         vector<Produto*> get_produtos();
         string to_string();
         string get_compra();

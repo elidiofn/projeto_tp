@@ -26,6 +26,7 @@ class Venda
         Funcionario* get_vendedor();
         void set_vendedor(Funcionario* vendedor);
         string get_data();
+        float get_comissao();
         void add_intem(Produto* produto);
         void remover_item(Produto* produto);
         vector<Produto*> get_produtos();
@@ -34,6 +35,7 @@ class Venda
     private:
         vector<Produto*> itens;
         string data;
+        float comissao_vendedor;
         Funcionario* vendedor;
         float valor_total;
 };

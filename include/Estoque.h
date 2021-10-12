@@ -37,6 +37,7 @@ class Estoque
         void ler_estoque();
         int busca_indice_produto(string nome_produto);
         void cria_produto(string produto, int quantidade);
+        int insere_ordenado(string nome_produto);
 };
 
 #endif // ESTOQUE_H

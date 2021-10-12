@@ -20,9 +20,11 @@ class Funcionario
         string get_senha();
         virtual string get_salario_detalhes();
         virtual float get_salario();
+        virtual float get_comissao();
         virtual void set_comissao(float comissao);
         virtual string get_tipo();
         virtual string to_string();
+        virtual string get_funcionario();
     protected:
         float salario_base;
     private:
