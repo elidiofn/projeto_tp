@@ -3,7 +3,8 @@
 Venda::Venda()
 {
     valor_total = 0;
-    vendedor = new Vendedor("", "00/00/00", "0000", 0.0, "");
+    comissao_vendedor = 0;
+    vendedor = new Vendedor("", "00/00/00", "0000", 0.0, "", 0.0);
 }
 
 Venda::Venda(string data, Funcionario* vendedor)
@@ -22,6 +23,7 @@ Venda::Venda(string data, Funcionario* vendedor)
     }
     this->data = data;
     valor_total = 0;
+    comissao_vendedor = 0;
 }
 
 Venda::~Venda()
@@ -37,7 +39,12 @@ float Venda::get_valor(string forma_pagamento)
         {
             va += itens[i]->get_preco_avista();
         }
+        comissao_vendedor = va * 0.03;//comissão ao vendedor
         valor_total = va;
+    }
+    else
+    {
+        comissao_vendedor = valor_total * 0.03;//comissão ao vendedor
     }
     return valor_total;
 }
@@ -71,6 +78,11 @@ void Venda::set_vendedor(Funcionario* vendedor)
 string Venda::get_data()
 {
     return data;
+}
+
+float Venda::get_comissao()
+{
+    return comissao_vendedor;
 }
 
 void Venda::add_intem(Produto* novo)

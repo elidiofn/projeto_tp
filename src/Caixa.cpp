@@ -29,7 +29,7 @@ void Caixa::entrada(Venda venda, string pagamento)
     {
         estoque.saida(itens[i], 1);
     }
-    if(pagamento == "avista"){
+    if(pagamento == "av"){
         saldo += venda.get_valor("av");
     }
     else
@@ -167,6 +167,7 @@ void Caixa::cria_caixa(string linha)
     tipo = linha[0];
     int indice = 2;
     vector<string> produ;
+    Funcionario* vendedor;
     while(linha[indice] != '|')
     {
         valor += linha[indice];
@@ -267,8 +268,8 @@ void Caixa::cria_caixa(string linha)
             senha += funcionario[i];
             i++;
         }
-        Funcionario* f = new Gerente(nome, data_nascimento, cpf, salario, senha);
-        v = Venda(data,f);
+        vendedor = new Gerente(nome, data_nascimento, cpf, salario, senha);
+        v = Venda(data,vendedor);
     }
     else
     {
@@ -309,8 +310,8 @@ void Caixa::cria_caixa(string linha)
             senha += funcionario[i];
             i++;
         }
-        Funcionario* f = new Vendedor(nome, data_nascimento, cpf, salario, senha);
-        v = Venda(data,f);
+        vendedor = new Vendedor(nome, data_nascimento, cpf, salario, senha);
+        v = Venda(data,vendedor);
     }
     //lendo os prdutos da compra ou venda
     while(linha[indice] != '>' && indice < linha.size())

@@ -24,6 +24,22 @@ extern Caixa caixa;
 string get_funcionarios();
 void salva_funcionarios(string);
 
+bool verifica_cadastro(string cpf)
+{
+    if(cpf == gerente.get_cpf())
+    {
+        return true;
+    }
+    for(int i = 0; i < vendedores.size(); i++)
+    {
+        if(cpf == vendedores[i].get_cpf())
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 void cadastrar_vendedor()
 {
     string nome, data_nasc, cpf, senha;
@@ -41,8 +57,15 @@ void cadastrar_vendedor()
     cin >> sal;
     cin.ignore();
     Vendedor vend = Vendedor(nome, data_nasc, cpf, sal, senha);
-    vendedores.push_back(vend);
-    salva_funcionarios(get_funcionarios());
+    if(!verifica_cadastro(cpf))
+    {
+        vendedores.push_back(vend);
+        salva_funcionarios(get_funcionarios());
+    }
+    else
+    {
+        cout << "ERRO CPF JÁ CADASTRADO";
+    }
     cout << "\n============================================================================\n";
 }
 void excluir_vendedor()
@@ -64,10 +87,10 @@ void excluir_vendedor()
 void exibir_vendedores()
 {
     cout << "==================================FUNCIONARIOS================================\n";
-    cout << gerente.to_string() << endl;
+    cout << gerente.get_funcionario() << endl;
     for(int i =0; i < vendedores.size(); i++)
     {
-        cout << vendedores[i].to_string() << endl;
+        cout << vendedores[i].get_funcionario() << endl;
     }
     cout << "\n==============================================================================\n";
 }
@@ -138,7 +161,6 @@ void realizar_venda_gerente()
     float sal = gerente.get_salario();
     Funcionario* ge = new Gerente(nome,data_nasc, rg, sal, senha);
     Venda ve = Venda(data, ge);
-    delete ge;
     while(nome_produto != "SAIR" || nome_produto != "sair")
     {
         cout << "\nNOME DO PRODUTO PARA ADICIONAR(DIGITE SAIR PARA FINALIZAR): ";
@@ -160,9 +182,13 @@ void realizar_venda_gerente()
     getline(cin, pagamento);
     if(pagamento == "1")
     {
-        pagamento = "avista";
+        pagamento = "av";
     }
+    ve.get_valor(pagamento);
+    gerente.set_comissao(ve.get_comissao());
     caixa.entrada(ve,pagamento);
+    salva_funcionarios(get_funcionarios());
+    delete ge;
     cout << "\n=============================================================================\n";
 }
 void relatorio_vendas()

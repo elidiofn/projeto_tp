@@ -72,12 +72,22 @@ void Funcionario::set_comissao(float comissao)
 
 }
 
+float Funcionario::get_comissao()
+{
+
+}
+
 string Funcionario::get_tipo()
 {
 
 }
 
 string Funcionario::to_string()
+{
+
+}
+
+string Funcionario::get_funcionario()
 {
 
 }

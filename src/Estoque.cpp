@@ -155,18 +155,36 @@ int Estoque::busca_indice_produto(string nome)
     preco_venda = std::stof(pv);
     if(tipo == "Material Construcao")
     {
-         produtos.push_back(make_pair(new MaterialConstrucao(nome, preco_compra, preco_venda), quantidade));
+         produtos.insert(produtos.begin() + insere_ordenado(nome), make_pair(new MaterialConstrucao(nome, preco_compra, preco_venda), quantidade));
     }
     else if(tipo == "Material Eletrico")
     {
-         produtos.push_back(make_pair(new MaterialEletrico(nome, preco_compra, preco_venda), quantidade));
+         produtos.insert(produtos.begin() + insere_ordenado(nome), make_pair(new MaterialEletrico(nome, preco_compra, preco_venda), quantidade));
     }
     else if(tipo == "Material Hidraulico")
     {
-        produtos.push_back(make_pair(new MaterialHidraulico(nome, preco_compra, preco_venda), quantidade));
+        produtos.insert(produtos.begin() + insere_ordenado(nome), make_pair(new MaterialHidraulico(nome, preco_compra, preco_venda), quantidade));
     }
     else if(tipo == "Ferramenta")
     {
-         produtos.push_back(make_pair(new Ferramenta(nome, preco_compra, preco_venda), quantidade));
+         produtos.insert(produtos.begin() + insere_ordenado(nome), make_pair(new Ferramenta(nome, preco_compra, preco_venda), quantidade));
+    }
+}
+
+int Estoque::insere_ordenado(string nome_produto)
+{
+    vector<string> nomes;
+    for(int i = 0; i < produtos.size(); i++)
+    {
+        nomes.push_back(produtos[i].first->get_nome());
+    }
+    nomes.push_back(nome_produto);
+    std::sort(nomes.begin(), nomes.end());
+    for(int i = 0; i < nomes.size(); i++)
+    {
+        if(nome_produto == nomes[i])
+        {
+            return i;
+        }
     }
 }

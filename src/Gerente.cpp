@@ -5,9 +5,9 @@ Gerente::Gerente()
     comissao = 0;
 }
 
-Gerente::Gerente(string nome, string data_nascimento, string cpf, float salario_base, string senha): Funcionario(nome, data_nascimento, cpf, salario_base, senha)
+Gerente::Gerente(string nome, string data_nascimento, string cpf, float salario_base, string senha, float comissao): Funcionario(nome, data_nascimento, cpf, salario_base, senha)
 {
-    comissao = 0;
+    this->comissao = comissao;
 }
 
 Gerente::~Gerente()
@@ -15,14 +15,19 @@ Gerente::~Gerente()
 
 }
 
+float Gerente::get_comissao()
+{
+    return comissao;
+}
+
 void Gerente::set_comissao(float comissao)
 {
-    this->comissao = comissao;
+    this->comissao += comissao;
 }
 
 float Gerente::get_salario()
 {
-    return Funcionario::get_salario() + comissao;
+    return Funcionario::get_salario();
 }
 
 string Gerente::get_salario_detalhes()
@@ -50,5 +55,17 @@ string Gerente::to_string()
     ob += get_cpf() + ";";
     ob += std::to_string(get_salario()) + ";";
     ob += get_senha();
+    return ob;
+}
+
+string Gerente::get_funcionario()
+{
+    string ob = "";
+    ob += get_tipo() + ";" + get_nome() + ";";
+    ob += get_data_nascimento() + ";" ;
+    ob += get_cpf() + ";";
+    ob += std::to_string(get_salario()) + ";";
+    ob += get_senha() + ";";
+    ob += std::to_string(comissao);
     return ob;
 }

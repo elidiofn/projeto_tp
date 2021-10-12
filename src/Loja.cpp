@@ -1,8 +1,10 @@
 /*
 >Discentes: Elidio Faustino do Nascimento
             Isa Cristina Gonçalves de Paiva
-            Lucas de Souza Silva
->Matrícula: 120210685
+            Lucas de Sousa Silva
+>Matrículas: 120210685
+             120110786
+             120111779
 >Período: 2020.2
 >Curso: Engenharia Elétrica
 >Disciplina: Técnicas de Programação
@@ -10,7 +12,6 @@
 >Professor: Marcus Salerno
 >Unidade 9: Projeto
 */
-
 #include "Funcionario.h"
 #include "Gerente.h"
 #include "Vendedor.h"
@@ -45,6 +46,7 @@ void relatorio_estoque();
 void relatorio_caixa();
 void menu_gerente();
 void consultar_salario_gerente();
+bool verifica_cadastro(string);
 
 //prototipos vendendor
 void realizar_venda();
@@ -67,6 +69,7 @@ int main()
     login();
     return 0;
 }
+
  void login()
  {
     system("cls");
@@ -99,22 +102,17 @@ int main()
             string cpf = vendedores[i].get_cpf();
             string senha = vendedores[i].get_senha();
             float sal = vendedores[i].get_salario();
-            Funcionario* f = new Vendedor(nome, data_nasc, cpf, sal, senha);
+            float com = vendedores[i].get_comissao();
+            Funcionario* f = new Vendedor(nome, data_nasc, cpf, sal, senha, com);
             vendedor_uso = f;
             menu_vendedor();
+            delete f;
             login();
         }
     }
-    if(id == "SAIR" || id == "sair")
-    {
-        //
-    }
-    else
-    {
-        cout << "Usuário ou senha incoreto!!" <<endl;
-        system("pause");
-        login();
-    }
+    cout << "Usuário ou senha incoreto!!" <<endl;
+    system("pause");
+    login();
  }
 
  void cadastrar_gerente()
@@ -132,9 +130,17 @@ int main()
     getline(cin, senha);
     cout << "DIGITE O SALÁRIO: ";
     cin >> sal;
-    gerente = Gerente(nome, data_nasc, cpf, sal, senha);
-    salva_funcionarios(get_funcionarios());
+    if(!verifica_cadastro(cpf))
+    {
+        gerente = Gerente(nome, data_nasc, cpf, sal, senha);
+        salva_funcionarios(get_funcionarios());
+    }
+    else
+    {
+        cout << "ERRO CPF JÁ CADASTRADO";
+    }
     cout << "\n============================================================================\n";
+    system("pause");
  }
 
  void salva_funcionarios(string entrada)
@@ -164,50 +170,8 @@ int main()
     if(linha[0] == 'G')
     {
         int i = 1;
-        string nome = "", data_nascimento = "", cpf = "", sal = "", senha = "";
-        float salario;
-        while(linha[i] != ';')
-        {
-            i++;
-        }
-        i ++;
-        while(linha[i] != ';')
-        {
-            nome += linha[i];
-            i++;
-        }
-        i ++;
-        while(linha[i] != ';')
-        {
-            data_nascimento += linha[i];
-            i++;
-        }
-        i ++;
-        while(linha[i] != ';')
-        {
-            cpf += linha[i];
-            i++;
-        }
-        i ++;
-        while(linha[i] != ';')
-        {
-            sal += linha[i];
-            i++;
-        }
-        salario = std::stof(sal);
-        i++;
-        while(i < linha.size())
-        {
-            senha += linha[i];
-            i++;
-        }
-        gerente = Gerente(nome, data_nascimento, cpf, salario, senha);
-    }
-    else
-    {
-        int i = 1;
-        string nome = "", data_nascimento = "", cpf = "", sal = "", senha = "";
-        float salario;
+        string nome = "", data_nascimento = "", cpf = "", sal = "", senha = "", comissao;
+        float salario, com;
         while(linha[i] != ';')
         {
             i++;
@@ -239,13 +203,75 @@ int main()
         int cr = sal.find(',');
         sal.replace(cr, cr, ".");
         salario = std::stof(sal);
-        i++;
-        while(i < linha.size())
+        i ++;
+        while(linha[i] != ';')
         {
             senha += linha[i];
             i++;
         }
-        Vendedor v = Vendedor(nome, data_nascimento, cpf, salario, senha);
+        i++;
+        while(i < linha.size())
+        {
+            comissao += linha[i];
+            i++;
+        }
+        int co = comissao.find(',');
+        comissao.replace(co, co, ".");
+        com = std::stof(comissao);
+        gerente = Gerente(nome, data_nascimento, cpf, salario, senha, com);
+    }
+    else
+    {
+        int i = 1;
+        string nome = "", data_nascimento = "", cpf = "", sal = "", senha = "", comissao = "";
+        float salario, com;
+        while(linha[i] != ';')
+        {
+            i++;
+        }
+        i ++;
+        while(linha[i] != ';')
+        {
+            nome += linha[i];
+            i++;
+        }
+        i ++;
+        while(linha[i] != ';')
+        {
+            data_nascimento += linha[i];
+            i++;
+        }
+        i ++;
+        while(linha[i] != ';')
+        {
+            cpf += linha[i];
+            i++;
+        }
+        i ++;
+        while(linha[i] != ';')
+        {
+            sal += linha[i];
+            i++;
+        }
+        int cr = sal.find(',');
+        sal.replace(cr, cr, ".");
+        salario = std::stof(sal);
+        i ++;
+        while(linha[i] != ';')
+        {
+            senha += linha[i];
+            i++;
+        }
+        i++;
+        while(i < linha.size())
+        {
+            comissao += linha[i];
+            i++;
+        }
+        int co = comissao.find(',');
+        comissao.replace(co, co, ".");
+        com = std::stof(comissao);
+        Vendedor v = Vendedor(nome, data_nascimento, cpf, salario, senha, com);
         vendedores.push_back(v);
     }
  }
@@ -253,10 +279,10 @@ int main()
  string get_funcionarios()
 {
      string func = "";
-     func += gerente.to_string() + "\n";
+     func += gerente.get_funcionario() + "\n";
      for(int i = 0; i < vendedores.size(); i++)
      {
-         func += vendedores[i].to_string() + + "\n";
+         func += vendedores[i].get_funcionario() + + "\n";
      }
      return func;
 }

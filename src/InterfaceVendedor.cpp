@@ -13,6 +13,10 @@ using std::getline;
 extern Estoque estoque;
 extern Funcionario* vendedor_uso;
 extern Caixa caixa;
+extern vector<Vendedor> vendedores;
+
+string get_funcionarios();
+void salva_funcionarios(string);
 
 void realizar_venda()
 {
@@ -42,7 +46,17 @@ void realizar_venda()
     getline(cin, pagamento);
     if(pagamento == "1")
     {
-        pagamento = "avista";
+        pagamento = "av";
+    }
+    ve.get_valor(pagamento);
+    for(int i = 0; i < vendedores.size(); i++)
+    {
+        if(vendedor_uso->get_cpf() == vendedores[i].get_cpf())
+        {
+            vendedores[i].set_comissao(ve.get_comissao());
+            salva_funcionarios(get_funcionarios());
+            vendedor_uso->set_comissao(ve.get_comissao());
+        }
     }
     caixa.entrada(ve,pagamento);
     cout << "\n=============================================================================\n";
